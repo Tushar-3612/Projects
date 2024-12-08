@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Tips for Maintaining Good Health and Well-being</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="User Logo" class="user-logo">
+            <h1 class="header-title">Good Health and Well Being</h1>
+        </div>
+         
+        <nav>
+            <div class="menu-icon" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul>
+                <li><a href="homepage.php">Home</a></li>
+                <li class="dropdown">
+                    <a href="services.html">Services</a>
+                    <ul class="dropdown-content">
+                        <li><a href="routine.html">Routine</a></li>
+                        <li><a href="sleep.html">Sleep</a></li>
+                        <li><a href="meal.html">Meal Plan</a></li>
+                        <li><a href="stress.html">Stress & Anxiety Relief</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">Among Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="tips">
+        <div class="container">
+            <h1>5 Tips for Maintaining Good Health and Well-being</h1>
+
+            <h2>Introduction</h2>
+            <p>In today’s fast-paced world, good health and well-being are essential for everyone. In this article, I’ll share some tips that can help you enhance your health and well-being.</p>
+
+            <div class="tip">
+                <h2>1. Balanced Diet</h2>
+                <p>A balanced diet is crucial for good health. Maharashtrian dishes like thalipeeth, pithla, and bhakri provide healthy and tasty options for your child.</p>
+            </div>
+
+            <div class="tip">
+                <h2>2. Regular Exercise</h2>
+                <p>Regular exercise is important for building strength. Make sure to set aside time daily for yoga or other physical activities.</p>
+            </div>
+
+            <div class="tip">
+                <h2>3. Adequate Sleep</h2>
+                <p>Good sleep is vital for children. Maintaining a sleep routine helps support their growth and development.</p>
+            </div>
+
+            <div class="tip">
+                <h2>4. Stress Management</h2>
+                <p>In today’s fast-paced life, stress is common. Learn to manage stress through meditation and deep breathing exercises.</p>
+            </div>
+
+            <div class="tip">
+                <h2>5. Stay Hydrated</h2>
+                <p>Staying hydrated is essential for your health. Ensure that you drink an adequate amount of water every day.</p>
+            </div>
+
+            <h2>Conclusion</h2>
+            <p>By incorporating these tips into your daily routine, you can achieve better health and well-being for yourself and your family. Do you have any additional tips or suggestions? Please share them in the comments!</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Good Health and Well-being. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('nav ul');
+            const menuIcon = document.querySelector('.menu-icon');
+            nav.classList.toggle('show-menu');
+            menuIcon.classList.toggle('active');
+        }
+    </script>
+
+</body>
+
+</html>

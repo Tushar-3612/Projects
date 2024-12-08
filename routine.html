@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Tracker - Daily Routine Plan</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="services.css">
+    <link rel="stylesheet" href="header.css">
+    <style>
+       /* Updated CSS for buttons */
+.special-button {
+    background-color: #ffffff; /* Same as header color */
+    color: #0072ff; /* Text color, assuming header color is white */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s;
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Allow margin and padding */
+    margin-top: 10px; /* Space above the button */
+    margin-right: 10px;
+}
+
+.special-button:hover {
+    background-color: #f0f0f0; /* Slight gray on hover */
+}
+/* Assuming the header has a background color */
+header {
+    background-color: #0760ce; /* Header background color */
+}
+
+/* Button styling to match the header background */
+.special-button {
+    background-color: #0072ff; /* Same as header background */
+    color: white; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.special-button:hover {
+    background-color: #388e3c; /* Darker green on hover */
+}
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="logo.jpeg" alt="User Logo" class="user-logo">
+            <h1 class="header-title">Good Health and Well Being</h1>
+        </div>
+
+        <nav>
+            <div class="menu-icon" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="services.html">Services</a>
+                    <ul class="dropdown-content">
+                        <li><a href="routine.html">Routine</a></li>
+                        <li><a href="sleep.html">Sleep</a></li>
+                        <li><a href="meal.html">Meal Plan</a></li>
+                        <li><a href="stress.html">Stress & Anxiety Relief</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="daily-routine">
+        <h2>Daily Routine Plan</h2>
+
+        <h3>Morning Routine</h3>
+        <ul>
+            <li><strong>7:00 AM</strong> - Wake up and freshen up</li>
+            <li><strong>7:30 AM</strong> - Healthy breakfast</li>
+            <li><strong>8:00 AM</strong> - Outdoor play or exercise</li>
+        </ul>
+
+        <h3>Afternoon Routine</h3>
+        <ul>
+            <li><strong>12:00 PM</strong> - Lunch</li>
+            <li><strong>1:00 PM</strong> - Quiet time or reading</li>
+            <li><strong>2:00 PM</strong> - Creative activities</li>
+        </ul>
+
+        <h3>Evening Routine</h3>
+        <ul>
+            <li><strong>5:30 PM</strong> - Dinner</li>
+            <li><strong>6:30 PM</strong> - Family time or games</li>
+            <li><strong>8:00 PM</strong> - Bedtime story</li>
+            <li><strong>8:30 PM</strong> - Sleep</li>
+        </ul>
+
+        <!-- Option to accept the default routine -->
+        <button class="special-button" id="accept-routine" onclick="acceptRoutine()">Accept Default Routine</button>
+
+        <!-- Reset Button -->
+        <button class="reset-button" onclick="resetRoutine()">Reset Routine</button>
+
+        <h3>Or, Set Your Own Routine</h3>
+        <form id="custom-routine-form">
+            <label for="time">Task Time:</label>
+            <input type="time" id="time" required>
+            <label for="task">Task Description:</label>
+            <input type="text" id="task" required>
+            <button type="submit">Add Task</button>
+        </form>
+
+        <h3>Your Custom Routine:</h3>
+        <ul id="custom-routine-list"></ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Good Health and Well Being. All rights reserved.</p>
+    </footer>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="routine.js"></script>
+
+</body>
+
+</html>

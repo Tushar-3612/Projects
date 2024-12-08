@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="services.css">
+   
+</head>
+
+<body>
+
+     
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="logo.jpeg" alt="User Logo" class="user-logo"> <!-- Logo Image -->
+            <h1 class="header-title">Good Health and Well Being</h1> <!-- Applied class 'header-title' to h1 -->
+        </div>
+         
+        <nav>
+            <div class="menu-icon" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul>
+                <li><a href="homepage.php">Home</a></li>
+                <li class="dropdown">
+                    <a href="services.html">Services</a>
+                    <ul class="dropdown-content">
+                        <li><a href="routine.html">Routine</a></li>
+                        <li><a href="sleep.html">Sleep</a></li>
+                        <li><a href="meal.html">Meal Plan</a></li>
+                        <li><a href="stress.html">Stress & Anxiety Relief</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Daysetee Section -->
+    <section id="daysetee">
+        <h2>Set Your Daily Routine</h2>
+
+        <!-- Default Routine -->
+        <h3>Default Routine</h3>
+        <ul>
+            <li>Wake up early (6:00 - 7:00 AM)</li>
+            <li>Hydrate (7:00 AM)</li>
+            <li>Exercise (7:15 - 8:00 AM)</li>
+            <li>Meditation or mindfulness (8:00 - 8:15 AM)</li>
+            <li>Healthy breakfast (8:30 AM)</li>
+            <li>Plan your day (9:00 AM)</li>
+            <li>Work/study session (9:30 AM - 12:30 PM)</li>
+            <li>Lunch (12:30 - 1:00 PM)</li>
+            <li>Light activity (1:00 - 1:15 PM)</li>
+            <li>Second work session (1:30 - 4:30 PM)</li>
+            <li>Dinner (7:00 - 8:00 PM)</li>
+            <li>Relaxation time (8:00 - 9:00 PM)</li>
+            <li>Prepare for bed (9:30 - 10:00 PM)</li>
+        </ul>
+
+        <!-- Customize Routine -->
+        <h3>Customize Your Routine</h3>
+        <form id="routineForm">
+            <label for="mobile">Mobile Number:</label>
+            <input type="tel" id="mobile" name="mobile" required placeholder="Enter your mobile number" pattern="^\+?[1-9]\d{1,14}$">
+
+            <h4>Morning</h4>
+            <label for="wakeUpTime">Wake Up Time:</label>
+            <input type="time" id="wakeUpTime" name="wakeUpTime" value="06:00">
+
+            <label for="exerciseTime">Exercise Time:</label>
+            <input type="time" id="exerciseTime" name="exerciseTime" value="07:15">
+
+            <h4>Afternoon</h4>
+            <label for="lunchTime">Lunch Time:</label>
+            <input type="time" id="lunchTime" name="lunchTime" value="12:30">
+
+            <h4>Evening</h4>
+            <label for="dinnerTime">Dinner Time:</label>
+            <input type="time" id="dinnerTime" name="dinnerTime" value="19:00">
+
+            <button type="submit">Set Routine & Enable Notifications</button>
+        </form>
+
+        <p>Receive SMS reminders to follow your routine!</p>
+        <div id="successMessage" class="success" style="display: none;">Your routine has been successfully set! We'll send you reminders shortly.</div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Health Tracker. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('routineForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Capture the routine details
+            const mobile = document.getElementById('mobile').value;
+            const wakeUpTime = document.getElementById('wakeUpTime').value;
+            const exerciseTime = document.getElementById('exerciseTime').value;
+            const lunchTime = document.getElementById('lunchTime').value;
+            const dinnerTime = document.getElementById('dinnerTime').value;
+
+            // Log the data to the console (for now)
+            console.log("Routine Set for:", mobile);
+            console.log("Wake Up Time:", wakeUpTime);
+            console.log("Exercise Time:", exerciseTime);
+            console.log("Lunch Time:", lunchTime);
+            console.log("Dinner Time:", dinnerTime);
+
+            // Show success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>

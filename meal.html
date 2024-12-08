@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Tracker - Meal Plan</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="services.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.jpeg" alt="User Logo" class="user-logo"> <!-- Logo Image -->
+            <h1 class="header-title">Good Health and Well Being</h1> <!-- Applied class 'header-title' to h1 -->
+        </div>
+         
+        <nav>
+            <div class="menu-icon" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul>
+                <li><a href="homepage.php">Home</a></li>
+                <li class="dropdown">
+                    <a href="services.html">Services</a>
+                    <ul class="dropdown-content">
+                        <li><a href="routine.html">Routine</a></li>
+                        <li><a href="sleep.html">Sleep</a></li>
+                        <li><a href="meal.html">Meal Plan</a></li>
+                        <li><a href="stress.html">Stress & Anxiety Relief</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <section id="meal-plans">
+        <h2>Meal Plans for Different Age Groups</h2>
+        <h3><a href="2_5.html">Meal plan for 2 to 5-year-olds</a></h3>
+        <h3><a href="6_10.html">Meal plan for 6 to 10-year-olds</a></h3>
+        <h3><a href="10_15.html">Meal plan for 10 to 15-year-olds</a></h3>
+        <h3><a href="16-20.html">Meal plan for 16 to 20-year-olds</a></h3>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Good Health and Well Being. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('nav ul');
+            const menuIcon = document.querySelector('.menu-icon');
+            nav.classList.toggle('show-menu');
+            menuIcon.classList.toggle('active');
+        }
+    </script>
+
+</body>
+
+</html>

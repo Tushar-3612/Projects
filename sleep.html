@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Tracker: Sleep Plan</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="services.css">
+    <link rel="stylesheet" href="sleep.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="logo.jpeg" alt="User Logo" class="user-logo"> <!-- Logo Image -->
+            <h1 class="header-title">Good Health and Well Being</h1> <!-- Applied class 'header-title' to h1 -->
+        </div>
+        <nav>
+            <div class="menu-icon" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul>
+                <li><a href="homepage.php">Home</a></li>
+                <li class="dropdown">
+                    <a href="services.html">Services</a>
+                    <ul class="dropdown-content">
+                        <li><a href="routine.html">Routine</a></li>
+                        <li><a href="sleep.html">Sleep</a></li>
+                        <li><a href="meal.html">Meal Plan</a></li>
+                        <li><a href="stress.html">Stress & Anxiety Relief</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h1>Sleep and Relaxation Hub</h1>
+
+        <!-- Tab Headers -->
+        <div class="tabs">
+            <div class="tab-link active" data-tab="sleep-music">Sleep Music</div>
+            <div class="tab-link" data-tab="meditation-music">Meditation Music</div>
+            <div class="tab-link" data-tab="sleep-stories">Sleep Stories</div>
+        </div>
+
+        <!-- Tab Content -->
+        <div id="sleep-music" class="tab-content active">
+            <h2>Sleep Music</h2>
+            <p>Drift into a peaceful slumber with calming melodies that ease your mind:</p>
+            <ul>
+                <li>Track 1: <a href="https://youtu.be/vPhg6sc1Mk4?si=rh8IlYjbDGrof0SR" target="_blank">Ocean Waves</a></li>
+                <li>Track 2: <a href="https://youtu.be/biGZwXX67h8?si=gppLyFQ21V-O9eKI" target="_blank">Deep Sleep Harmony</a></li>
+            </ul>
+        </div>
+
+        <div id="meditation-music" class="tab-content">
+            <h2>Meditation Music</h2>
+            <p>Unlock your inner peace and relax deeply with melodies crafted for meditation:</p>
+            <ul>
+                <li>Track 1: <a href="https://www.youtube.com/watch?v=aIIEI33EUqI" target="_blank">Mindfulness Melodies</a></li>
+                <li>Track 2: <a href="https://www.youtube.com/watch?v=eGAMRXIHmFo" target="_blank">Focused Breathing Tones</a></li>
+                <li>Track 3: <a href="https://www.youtube.com/watch?v=Qwfx0pzaqK0" target="_blank">Spiritual Awakening Sounds</a></li>
+            </ul>
+        </div>
+
+        <div id="sleep-stories" class="tab-content">
+            <h2>Sleep Stories</h2>
+            <p>Drift off to sleep with these soothing bedtime stories:</p>
+            <ul>
+                <li>Story 1: <a href="https://www.youtube.com/watch?v=09r8XdHRWe8" target="_blank">The Enchanted Forest</a></li>
+                <li>Story 2: <a href="https://www.youtube.com/watch?v=B5unCXpegAw" target="_blank">Journey Through the Stars</a></li>
+                <li>Story 3: <a href="https://www.youtube.com/watch?v=9BbOYdQ0lFU" target="_blank">The Whispering Winds</a></li>
+            </ul>
+        </div>
+
+        <!-- Logo Section -->
+        <div class="tab-content">
+            <img src="l.jpg" alt="Logo Image" style="display: block; margin: 0 auto; width: 100px; height: auto;"> <!-- Centered Logo Image -->
+        </div>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Good Health and Well Being. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript for handling tab switching
+        document.querySelectorAll('.tab-link').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove the active class from all tabs and tab contents
+                document.querySelectorAll('.tab-link').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+                // Add the active class to the clicked tab and corresponding content
+                this.classList.add('active');
+                document.getElementById(this.getAttribute('data-tab')).classList.add('active');
+            });
+        });
+
+        // JavaScript for the menu toggle functionality
+        function toggleMenu() {
+            const nav = document.querySelector('nav ul');
+            const menuIcon = document.querySelector('.menu-icon');
+            nav.classList.toggle('show-menu');
+            menuIcon.classList.toggle('active');
+        }
+    </script>
+
+</body>
+
+</html>

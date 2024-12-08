@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Tracker</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="services.css">
+    <style>
+        /* Container box styling for About Us */
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            width: 80%;
+            max-width: 1000px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            box-sizing: border-box;
+            margin-top: 20px;
+
+            /* Ensures the container takes up the full height of the screen */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Header styling for About Us */
+        h1 {
+            text-align: center;
+            color: #1976d2;
+        }
+
+        /* Sub-header styling */
+        h2 {
+            color: #1976d2;
+            border-bottom: 2px solid #bbdefb;
+            padding-bottom: 5px;
+        }
+
+        /* Paragraph styling */
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        /* List styling */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #1976d2;
+        }
+
+        /* Services section styling */
+        .services {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .service-item {
+            padding: 15px;
+            background-color: #e1f5fe;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .service-item:hover {
+            background-color: #b3e5fc;
+            transform: translateY(-5px);
+        }
+
+        /* Link styling */
+        a {
+            text-decoration: none;
+            color: #1976d2;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header section remains unchanged -->
+    <header>
+        <div class="logo">
+            <img src="logo.jpeg" alt="User Logo" class="user-logo">
+            <h1 class="header-title">Good Health and Well Being</h1>
+        </div>
+
+        <nav>
+            <div class="menu-icon" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul>
+                <li><a href="homepage.php">Home</a></li>
+                <li class="dropdown">
+                    <a href="services.html">Services</a>
+                    <ul class="dropdown-content">
+                        <li><a href="routine.html">Routine</a></li>
+                        <li><a href="sleep.html">Sleep</a></li>
+                        <li><a href="meal.html">Meal Plan</a></li>
+                        <li><a href="stress.html">Stress & Anxiety Relief</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- About Us container -->
+<div>
+    <div>
+
+        <h1> About Us</h1>
+
+        <h2> Website Name: Good Health and Well-being</h2>
+
+        <h2> Mission Statement:</h2>
+        <p> Our mission is to support parents and caregivers by providing healthy and balanced meal plans that are easy and delicious for their young children. We aim to enhance the nutrition and overall health of every child by offering a diverse range of meals that cater to different tastes and dietary needs. We believe that by promoting healthy eating habits from an early age, we can contribute to building a healthier future for generations to come.</p>
+
+        <h2> Vision Statement:</h2>
+        <p> Our vision is to empower every family to provide nutritious meals for their children, ensuring they grow up strong and happy. We envision a world where every child has access to healthy food options, understands the importance of nutrition, and develops lifelong healthy eating habits. By fostering a supportive community focused on health and wellness, we aim to inspire families to prioritize nutrition and well-being, paving the way for today’s children to become tomorrow's leaders and change-makers.</p>
+
+        <h2> Core Values:</h2>
+        <ul>
+            <li><strong> Nutrition:</strong> The health of children is our top priority.</li>
+            <li><strong> Routine:</strong> We provide guidance on establishing healthy eating routines that fit into family schedules.</li>
+            <li><strong> Sleep:</strong> We emphasize the importance of proper sleep for children’s growth and development. We provide tips for creating a restful environment, such as maintaining a consistent bedtime, reducing screen time before bed, and using calming music to promote relaxation.</li>
+            <li><strong> Stress and Anxiety Relief:</strong> We offer resources and strategies to help children manage stress and anxiety through nutrition, mindfulness, and healthy habits.</li>
+        </ul>
+
+        <h2>  Services Offered:</h2>
+        <div class="services">
+            <div class="service-item">
+                <strong>  Default Meal Plans:</strong> Pre-designed meal plans that are nutritious and suitable for young children, ensuring they receive balanced meals.
+            </div>
+
+            <div class="service-item">
+                <strong> Stress and Anxiety Management:</strong> We provide guidelines on nutritious foods that can help reduce anxiety, along with tips for relaxation techniques and creating a calming environment.
+            </div>
+        </div>
+
+        <div class="contact-info">
+            <h2>  Our Contact Information</h2>
+            <p><a href="team.html">  Meet our Team</a></p>
+        </div>
+
+    </div>
+</div>
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('nav ul');
+            const menuIcon = document.querySelector('.menu-icon');
+            nav.classList.toggle('show-menu');
+            menuIcon.classList.toggle('active');
+        }
+    </script>
+
+</body>
+
+</html>

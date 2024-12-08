@@ -1,0 +1,209 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: #0072ff; /* Blue header */
+    color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.user-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.header-title {
+    font-size: 2rem;
+    background-image: url('your-background-image.jpg'); /* Replace with actual image path */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Navigation Styles */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    margin: 0;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffd700; /* Gold hover effect */
+}
+
+.menu-icon {
+    display: none; /* Hidden on large screens */
+    cursor: pointer;
+    flex-direction: column;
+}
+
+.menu-icon .bar {
+    height: 4px;
+    width: 30px;
+    margin: 5px 0;
+    background-color: white;
+}
+
+/* Banner Styles */
+#about .banner {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 400px; /* Ensures the banner does not overflow */
+    object-fit: cover;
+}
+
+/* Blog Section Styles */
+#blog {
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+#blog h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.blog-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+#blog article {
+    margin-bottom: 20px;
+}
+
+#blog article h3 {
+    font-size: 1.5rem;
+    color: #0072ff;
+}
+
+#blog article p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+#blog article a {
+    color: #0072ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#blog article a:hover {
+    color: #ffd700;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #0072ff;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .menu-icon {
+        display: flex; /* Show the menu icon on mobile */
+    }
+
+    nav ul {
+        display: none; /* Hide the menu by default on small screens */
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    nav ul.show-menu {
+        display: flex; /* Show the menu when toggled */
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .header-title {
+        font-size: 1.8rem; /* Adjust the font size for mobile */
+        padding: 12px;
+    }
+
+    #blog h2 {
+        font-size: 1.8rem;
+    }
+
+    #blog article h3 {
+        font-size: 1.3rem;
+    }
+}
+/* Container for the buttons */
+.auth-buttons {
+    display: flex;
+    justify-content: center; /* Centers the buttons horizontally */
+    align-items: center;     /* Centers the buttons vertically (if needed) */
+    gap: 10px;               /* Adds space between the buttons */
+    height: 100px;           /* Optional: Set a height for the container */
+  }
+  
+  /* Style for the buttons */
+  .special-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 2px solid #333;
+    border-radius: 5px;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  .special-button:hover {
+    background-color: #ddd;
+  }
+  

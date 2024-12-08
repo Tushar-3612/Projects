@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Plan for Kids</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean, modern font */
+            background-color: #f7f7f7;
+            color: #333;
+            padding: 30px 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2980b9;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #e67e22;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .meal-plan {
+            background-color: #ffffff;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            font-size: 1.1em;
+        }
+
+        th {
+            background-color: #2980b9;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f39c12;
+            transition: background-color 0.3s ease;
+        }
+
+        td {
+            color: #555;
+        }
+
+        /* Button for downloading meal plan */
+        .download-btn {
+            display: inline-block;
+            background-color: #27ae60;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.1em;
+            margin: 20px 0;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: #2ecc71;
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.6em;
+            }
+
+            table {
+                font-size: 1em;
+                overflow-x: auto;
+                display: block;
+            }
+
+            .meal-plan {
+                padding: 15px;
+            }
+
+            .download-btn {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Meal Plan for Kids (6-10 years)</h1>
+
+    <!-- Day 1 -->
+    <div class="meal-plan">
+        <h2>Day 1</h2>
+        <table>
+            <tr>
+                <th>Meal</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>Breakfast</td>
+                <td>Poha with peas and peanuts, served with a glass of milk or buttermilk.</td>
+            </tr>
+            <tr>
+                <td>Snack</td>
+                <td>Shankarpali or kothimbir vadi.</td>
+            </tr>
+            <tr>
+                <td>Lunch</td>
+                <td>Bhakri with varan and batata bhaji, accompanied by koshimbir.</td>
+            </tr>
+            <tr>
+                <td>Evening Snack</td>
+                <td>Fruit chaat or roasted chana.</td>
+            </tr>
+            <tr>
+                <td>Dinner</td>
+                <td>Misal served with pav and a bowl of curd.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="meal-plan">
+        <h2>Day 2</h2>
+        <table>
+            <tr>
+                <th>Meal</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>Breakfast</td>
+                <td>Upma with vegetables, served with a glass of milk.</td>
+            </tr>
+            <tr>
+                <td>Snack</td>
+                <td>Aloo tikki with chutney.</td>
+            </tr>
+            <tr>
+                <td>Lunch</td>
+                <td>Chapati with chole and a side of sabzi.</td>
+            </tr>
+            <tr>
+                <td>Evening Snack</td>
+                <td>Murmura with spices and chopped onions and tomatoes.</td>
+            </tr>
+            <tr>
+                <td>Dinner</td>
+                <td>Pongal with sambar and steamed vegetables.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="meal-plan">
+        <h2>Day 3</h2>
+        <table>
+            <tr>
+                <th>Meal</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>Breakfast</td>
+                <td>Sabudana khichdi with peanuts, served with buttermilk.</td>
+            </tr>
+            <tr>
+                <td>Snack</td>
+                <td>Banana or apple slices with chaat masala.</td>
+            </tr>
+            <tr>
+                <td>Lunch</td>
+                <td>Puran poli with ghee and mixed vegetable raita.</td>
+            </tr>
+            <tr>
+                <td>Evening Snack</td>
+                <td>Dhokla.</td>
+            </tr>
+            <tr>
+                <td>Dinner</td>
+                <td>Thalipeeth with butter, served with dal fry and steamed greens.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Add More Days as needed -->
+
+
+</body>
+</html>

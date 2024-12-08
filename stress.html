@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breath Game for Stress & Anxiety</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="services.css">
+    <link rel="stylesheet" href="stress.css">
+</head>
+
+<body>
+
+    <!-- Main Header -->
+    <header>
+        <div class="logo">
+            <img src="logo.jpeg" alt="User Logo" class="user-logo"> <!-- Logo Image -->
+            <h1 class="header-title">Good Health and Well Being</h1> <!-- Applied class 'header-title' to h1 -->
+        </div>
+         
+        <nav>
+            <div class="menu-icon" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul>
+                <li><a href="homepage.php">Home</a></li>
+                <li class="dropdown">
+                    <a href="services.html">Services</a>
+                    <ul class="dropdown-content">
+                        <li><a href="routine.html">Routine</a></li>
+                        <li><a href="sleep.html">Sleep</a></li>
+                        <li><a href="meal.html">Meal Plan</a></li>
+                        <li><a href="stress.html">Stress & Anxiety Relief</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="breath-game">
+        <div class="breath-game-container">
+            <h2>Breathe with Calm</h2>
+            <div class="circle" id="breathing-circle">
+                <p id="breathing-text">Inhale</p>
+            </div>
+            <div class="instructions">
+                Follow the guide: inhale, hold, and exhale slowly to calm your mind.
+            </div>
+            <button id="start-btn">Start Breathing Exercise</button>
+        </div>
+    </section>
+    
+
+
+    <!-- Main Footer -->
+    <footer>
+        <p>&copy; 2024 Good Health and Well Being. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

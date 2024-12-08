@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Tracker</title>
+       <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="services.css">
+    <link rel="stylesheet" href="header.css">
+    <style>/* Services Section */
+        #services {
+            padding: 40px;
+            background-color: #fff;
+        }
+        
+        #services h2 {
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .service {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+        
+        .service h3 {
+            font-size: 1.5em;
+        }
+        
+        .service p {
+            font-size: 1.2em;
+            color: #555;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .service {
+                flex-direction: column;
+                text-align: center;
+            }
+        
+            .service img {
+                margin: 10px 0;
+            }
+        }
+        
+        
+        /* Added CSS for buttons */
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+        .special-button {
+            background-color: #4caf50; /* Bright green button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s;
+            text-decoration: none; /* Remove underline */
+            display: inline-block; /* Allow margin and padding */
+            margin-top: 10px; /* Space above the button */
+            margin-right: 10px;
+        }
+        .special-button:hover {
+            background-color: #81c784; /* Lighter green on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.jpeg" alt="User Logo" class="user-logo"> <!-- Logo Image -->
+            <h1 class="header-title">Good Health and Well Being</h1> <!-- Applied class 'header-title' to h1 -->
+        </div>
+         
+        <nav>
+            <div class="menu-icon" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul>
+                <li><a href="homepage.php">Home</a></li>
+                <li class="dropdown">
+                    <a href="services.html">Services</a>
+                    <ul class="dropdown-content">
+                        <li><a href="routine.html">Routine</a></li>
+                        <li><a href="sleep.html">Sleep</a></li>
+                        <li><a href="meal.html">Meal Plan</a></li>
+                        <li><a href="stress.html">Stress & Anxiety Relief</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+   
+    <!-- Services Section -->
+    <section id="services">
+        <h2>Our Services</h2>
+
+        <!-- Service 1: Routine -->
+        <div class="service">
+            <a href="routine.html">
+                <img src="r.jpg" alt="Routine">
+                <div>
+                    <h3>Daily Routine</h3>
+                    <p>Our daily routines help you maintain a healthy lifestyle, including exercises, work schedules, and self-care activities to improve overall wellness.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Service 2: Sleep -->
+        <div class="service">
+            <a href="sleep.html">
+                <img src="sleep.jpg" alt="Sleep">
+                <div>
+                    <h3>Sleep Health</h3>
+                    <p>Get tips and advice on improving your sleep quality, managing insomnia, and creating a peaceful sleeping environment.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Service 3: Meal Plan -->
+        <div class="service">
+            <a href="meal.html">
+                <img src="meal.jpg" alt="Meal Plan">
+                <div>
+                    <h3>Meal Planning</h3>
+                    <p>Our personalized meal plans ensure you're eating nutritious foods that align with your health goals, whether you're managing weight or enhancing performance.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Service 4: Stress & Anxiety Relief -->
+        <div class="service">
+            <a href="stress.html">
+                <img src="stress.jpg" alt="Stress & Anxiety Relief">
+                <div>
+                    <h3>Stress & Anxiety Relief</h3>
+                    <p>Discover techniques and therapies to reduce stress and anxiety, including breathing exercises, mindfulness, and relaxation methods.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+
+    <footer>
+        <p>&copy; 2024 Good Health and Well Being. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('nav ul');
+            const menuIcon = document.querySelector('.menu-icon');
+            nav.classList.toggle('show-menu');
+            menuIcon.classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>

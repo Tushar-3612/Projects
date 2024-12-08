@@ -1,0 +1,414 @@
+/* Basic styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header-title {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+/* Logo and Header */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.user-logo {
+    width: 50px;
+    height: 50px;
+}
+
+/* Navigation Styles */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    display: block;
+}
+
+/* Dropdown Styles */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content li a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content li a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Blog Section */
+#blog {
+    padding: 20px;
+}
+
+.blog-img {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
+
+/* Menu Icon for Mobile */
+.menu-icon {
+    display: none;
+    cursor: pointer;
+}
+
+.menu-icon .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        display: none;
+    }
+
+    nav ul.show-menu {
+        display: flex;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+}
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: #0072ff; /* Blue header */
+    color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.user-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.header-title {
+    font-size: 2rem;
+    background-image: url('your-background-image.jpg'); /* Replace with actual image path */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Navigation Styles */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    margin: 0;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffd700; /* Gold hover effect */
+}
+
+.menu-icon {
+    display: none; /* Hidden on large screens */
+    cursor: pointer;
+    flex-direction: column;
+}
+
+.menu-icon .bar {
+    height: 4px;
+    width: 30px;
+    margin: 5px 0;
+    background-color: white;
+}
+
+/* Banner Styles */
+#about .banner {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 400px; /* Ensures the banner does not overflow */
+    object-fit: cover;
+}
+
+/* Blog Section Styles */
+#blog {
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+#blog h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.blog-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+#blog article {
+    margin-bottom: 20px;
+}
+
+#blog article h3 {
+    font-size: 1.5rem;
+    color: #0072ff;
+}
+
+#blog article p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+#blog article a {
+    color: #0072ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#blog article a:hover {
+    color: hsl(324, 55%, 39%);
+}
+
+/* Footer Styles */
+footer {
+    background-color: #0072ff;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .menu-icon {
+        display: flex; /* Show the menu icon on mobile */
+    }
+
+    nav ul {
+        display: none; /* Hide the menu by default on small screens */
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    nav ul.show-menu {
+        display: flex; /* Show the menu when toggled */
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .header-title {
+        font-size: 1.8rem; /* Adjust the font size for mobile */
+        padding: 12px;
+    }
+
+    #blog h2 {
+        font-size: 1.8rem;
+    }
+
+    #blog article h3 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Larger screen styles */
+@media (min-width: 1024px) {
+    header {
+        justify-content: space-between;
+    }
+}
+ <style>
+/* Basic Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #f9f9f9;
+    color: #333;
+}
+
+header {
+    background-color: #1976d2;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Section Styles */
+section {
+    background-color: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #1976d2;
+}
+
+h3 {
+    color: #333;
+}
+
+form {
+    display: grid;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+label {
+    font-size: 1.1rem;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+button {
+    background-color: #1976d2;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #1565c0;
+}
+
+p {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* Success Message */
+.success {
+    color: green;
+    font-size: 1.1rem;
+    margin-top: 15px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 10px;
+    background-color: #1976d2;
+    color: white;
+}
+ 
