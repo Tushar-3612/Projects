@@ -22,5 +22,3 @@ meal planning, stress relief, sleep tracking, and overall wellness tips.
 
 - **Frontend:** HTML, CSS, JavaScript  
 - **Hosting:** [Netlify](https://www.netlify.com/)  
-
----
