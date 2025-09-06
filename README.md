@@ -19,5 +19,5 @@ meal planning, stress relief, sleep tracking, and overall wellness tips.
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** HTML, CSS, JavaScript  
+- **Frontend:** HTML, CSS, JavaScript, PHP for storing the user data 
 - **Hosting:** [Netlify](https://www.netlify.com/)  
