@@ -4,7 +4,6 @@ A simple and user-friendly web application to promote **healthy lifestyle habits
 meal planning, stress relief, sleep tracking, and overall wellness tips.  
 
 🚀 Live Demo: [healthyhealth.netlify.app](https://healthyhealth.netlify.app/)
-
 ---
 
 ## 📌 Features
