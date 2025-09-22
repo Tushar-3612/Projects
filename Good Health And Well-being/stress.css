@@ -1,0 +1,102 @@
+/* General styles for the breath game section */
+#breath-game {
+    background-color: #f4f9f9; /* Soft light background for calmness */
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    height: 100vh; /* Full viewport height */
+    margin: 0; /* Remove default margin */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Style for the container holding the game content */
+.breath-game-container {
+    background-color: #ffffff; /* Clean white background for the game container */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 40px;
+    text-align: center;
+    width: 100%;
+    max-width: 400px; /* Max width for the container */
+}
+
+/* Heading styling */
+h2 {
+    font-size: 1.8rem;
+    color: #4A90E2; /* Calming blue */
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Breathing circle styling */
+#breathing-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #4A90E2; /* Blue circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    animation: breathingAnimation 4s ease-in-out infinite; /* Breathing circle animation */
+}
+
+/* Keep the text in the center of the circle */
+#breathing-text {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #ffffff; /* White text */
+    margin: 0;
+}
+
+/* Instructions below the breathing circle */
+.instructions {
+    font-size: 1rem;
+    color: #666666; /* Soft gray for the instructions */
+    margin-top: 20px;
+}
+
+/* Button styling */
+#start-btn {
+    background-color: #4A90E2; /* Calming blue button */
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 30px;
+}
+
+/* Hover effect for the button */
+#start-btn:hover {
+    background-color: #357ABD; /* Slightly darker blue when hovering */
+}
+
+/* Active state for the button */
+#start-btn:active {
+    background-color: #357ABD;
+}
+
+/* Breathing circle animation (expansion and contraction) */
+@keyframes breathingAnimation {
+    0%, 100% {
+        transform: scale(1); /* Normal size */
+    }
+    33% {
+        transform: scale(1.1); /* Expand slightly */
+    }
+    66% {
+        transform: scale(1); /* Return to normal size */
+    }
+}
+
+/* Additional styling for the instructions */
+.instructions {
+    line-height: 1.6;
+    font-style: italic;
+    margin-top: 15px;
+    color: #777;
+}
