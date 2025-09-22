@@ -30,11 +30,7 @@ By visiting my portfolio, you can:
 
 ## Connect With Me
 - 🌐 Website: [tusharnagare.netlify.app](https://tusharnagare.netlify.app)  
-- 📧 Email: `your-email@example.com`  
-- 💼 LinkedIn: [linkedin.com/in/tusharnagare](https://www.linkedin.com/in/tusharnagare)  
-- 🐙 GitHub: [github.com/yourusername](https://github.com/yourusername)  
 
----
 
 Thank you for visiting my portfolio! I hope you enjoy exploring my work.
 
