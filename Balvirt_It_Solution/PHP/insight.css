@@ -1,0 +1,480 @@
+ /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .balvirt-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .balvirt-section-padding {
+            padding: 60px 0;
+        }
+        
+        .balvirt-section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .balvirt-section-title h1 {
+            font-size: 2.5rem;
+            color: #003366;
+            margin-bottom: 10px;
+        }
+        
+        .balvirt-section-title h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .balvirt-section-title h2 i {
+            margin-right: 10px;
+        }
+        
+        #navy {
+            color: #003366;
+        }
+        
+        #youtube {
+            color: #ff0000;
+        }
+        
+        #achievements {
+            color: #FFD700;
+        }
+        
+        #Webinars {
+            color: #0074D9;
+        }
+        
+        /* Video Section */
+        .balvirt-video-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .balvirt-video-card {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .balvirt-video-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .balvirt-video-thumbnail {
+            position: relative;
+            width: 100%;
+        }
+        
+        .balvirt-video-thumbnail iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+        }
+        
+        .balvirt-video-info {
+            padding: 15px;
+            background: white;
+        }
+        
+        .balvirt-video-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .balvirt-video-info p {
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .balvirt-youtube-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #ff0000;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        
+        .balvirt-youtube-btn:hover {
+            background: #cc0000;
+        }
+        
+        /* Achievements Section */
+        .balvirt-bg-light {
+            background-color: #f8f9fa;
+        }
+        
+        .balvirt-achievements-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .balvirt-achievement-card {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 25px 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .balvirt-achievement-icon {
+            font-size: 2.5rem;
+            color: #0074D9;
+            margin-bottom: 15px;
+        }
+        
+        .balvirt-achievement-card h3 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .balvirt-achievement-card p {
+            color: #666;
+            font-weight: 500;
+        }
+        
+        /* Testimonials Section */
+        .balvirt-testimonials-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .balvirt-testimonial-card {
+            max-width: 800px;
+            width: 100%;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .balvirt-quote-icon {
+            font-size: 1.5rem;
+            color: #0074D9;
+            margin-bottom: 15px;
+        }
+        
+        .balvirt-testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .balvirt-author-info {
+            text-align: center;
+        }
+        
+        .balvirt-author-name {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .balvirt-author-position {
+            color: #0074D9;
+            font-weight: 500;
+        }
+        
+        /* Webinars Section */
+        .balvirt-Webinars {
+            padding: 60px 0;
+        }
+        
+        .bw-webinar-container {
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .bw-fixed-section {
+            padding: 30px;
+            background: linear-gradient(135deg, #0074D9, #003366);
+            color: white;
+            text-align: center;
+        }
+        
+        .bw-fixed-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .bw-fixed-section p {
+            line-height: 1.6;
+        }
+        
+        .bw-auto-scroll-section {
+            background: #f8f9fa;
+            padding: 20px;
+            overflow: hidden;
+        }
+        
+        .bw-scroll-track {
+            display: flex;
+            animation: scroll 30s linear infinite;
+        }
+        
+        .bw-scroll-item {
+            flex: 0 0 auto;
+            width: 250px;
+            margin-right: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .bw-scroll-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-250px * 5 - 15px * 5));
+            }
+        }
+        
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .balvirt-section-title h1 {
+                font-size: 2.2rem;
+            }
+            
+            .balvirt-section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .balvirt-video-card {
+                max-width: 300px;
+            }
+            
+            .balvirt-testimonial-card {
+                padding: 25px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .balvirt-section-padding {
+                padding: 40px 0;
+            }
+            
+            .balvirt-section-title h1 {
+                font-size: 2rem;
+            }
+            
+            .balvirt-section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .balvirt-video-container {
+                gap: 15px;
+            }
+            
+            .balvirt-video-card {
+                max-width: 100%;
+            }
+            
+            .balvirt-achievement-card {
+                min-width: 150px;
+                padding: 20px 10px;
+            }
+            
+            .balvirt-achievement-icon {
+                font-size: 2rem;
+            }
+            
+            .balvirt-achievement-card h3 {
+                font-size: 1.8rem;
+            }
+            
+            .balvirt-testimonial-card {
+                padding: 20px;
+            }
+            
+            .bw-fixed-section {
+                padding: 25px 20px;
+            }
+            
+            .bw-fixed-section h2 {
+                font-size: 1.6rem;
+            }
+            
+            .bw-scroll-item {
+                width: 200px;
+            }
+            
+            .bw-scroll-item img {
+                height: 150px;
+            }
+            
+            @keyframes scroll {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(calc(-200px * 5 - 15px * 5));
+                }
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .balvirt-section-title h1 {
+                font-size: 1.8rem;
+            }
+            
+            .balvirt-section-title h2 {
+                font-size: 1.4rem;
+            }
+            
+            .balvirt-video-info h3 {
+                font-size: 1.1rem;
+            }
+            
+            .balvirt-video-info p {
+                font-size: 0.9rem;
+            }
+            
+            .balvirt-achievements-container {
+                gap: 15px;
+            }
+            
+            .balvirt-achievement-card {
+                min-width: 130px;
+                padding: 15px 8px;
+            }
+            
+            .balvirt-achievement-icon {
+                font-size: 1.8rem;
+            }
+            
+            .balvirt-achievement-card h3 {
+                font-size: 1.6rem;
+            }
+            
+            .balvirt-achievement-card p {
+                font-size: 0.9rem;
+            }
+            
+            .balvirt-testimonial-text {
+                font-size: 1rem;
+            }
+            
+            .balvirt-author-name {
+                font-size: 1.1rem;
+            }
+            
+            .bw-fixed-section {
+                padding: 20px 15px;
+            }
+            
+            .bw-fixed-section h2 {
+                font-size: 1.4rem;
+            }
+            
+            .bw-fixed-section p {
+                font-size: 0.9rem;
+            }
+            
+            .bw-auto-scroll-section {
+                padding: 15px;
+            }
+            
+            .bw-scroll-item {
+                width: 180px;
+            }
+            
+            .bw-scroll-item img {
+                height: 130px;
+            }
+            
+            @keyframes scroll {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(calc(-180px * 5 - 15px * 5));
+                }
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .balvirt-section-title h1 {
+                font-size: 1.6rem;
+            }
+            
+            .balvirt-section-title h2 {
+                font-size: 1.3rem;
+            }
+            
+            .balvirt-youtube-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .balvirt-achievement-card {
+                min-width: 120px;
+            }
+            
+            .balvirt-achievement-icon {
+                font-size: 1.6rem;
+            }
+            
+            .balvirt-achievement-card h3 {
+                font-size: 1.4rem;
+            }
+            
+            .balvirt-achievement-card p {
+                font-size: 0.85rem;
+            }
+            
+            .bw-scroll-item {
+                width: 160px;
+            }
+            
+            .bw-scroll-item img {
+                height: 120px;
+            }
+            
+            @keyframes scroll {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(calc(-160px * 5 - 15px * 5));
+                }
+            }
+        }
