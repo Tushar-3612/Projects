@@ -1,0 +1,771 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balvirt IT Solutions | Get In touch</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="shortcut icon" href="images/logo1.png" type="image/jpg">
+     
+    <style>
+        /* Balvirt Contact Form Styles */
+        .balvirt-body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .balvirt-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .balvirt-contact-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .balvirt-contact-form-box, .balvirt-contact-info-box {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .balvirt-section-title {
+            color: #001f3f;
+            margin-bottom: 20px;
+            font-size: 24px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .balvirt-input, .balvirt-textarea, .balvirt-select {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+
+        .balvirt-input:focus, .balvirt-textarea:focus, .balvirt-select:focus {
+            border-color: #001f3f;
+            outline: none;
+        }
+
+        .balvirt-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .balvirt-btn {
+            background-color: #001f3f;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .balvirt-btn:hover {
+            background-color: #003366;
+        }
+
+        .balvirt-hire-btn {
+            background-color: #28a745;
+            margin-top: 15px;
+        }
+
+        .balvirt-hire-btn:hover {
+            background-color: #218838;
+        }
+
+        .balvirt-contact-info-item {
+            margin-bottom: 15px;
+        }
+
+        .balvirt-contact-link {
+            color: #001f3f;
+            text-decoration: none;
+        }
+
+        .balvirt-contact-link:hover {
+            text-decoration: underline;
+        }
+
+        .balvirt-map {
+            border-radius: 8px;
+            margin-top: 15px;
+            border: none;
+        }
+
+        /* Modal Styles */
+        .balvirt-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .balvirt-modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .balvirt-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #aaa;
+            z-index: 10001;
+        }
+
+        .balvirt-close-btn:hover {
+            color: #000;
+        }
+
+        .balvirt-modal-title {
+            color: #001f3f;
+            margin-bottom: 20px;
+        }
+
+        .balvirt-hidden {
+            display: none !important;
+        }
+
+        .balvirt-success-msg {
+            color: #28a745;
+            margin-top: 10px;
+            padding: 15px;
+            background-color: #f8fff9;
+            border-radius: 5px;
+            border-left: 4px solid #28a745;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .balvirt-form-group {
+            margin-bottom: 20px;
+        }
+
+        .balvirt-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #001f3f;
+        }
+
+        .balvirt-portfolio-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .balvirt-portfolio-radio {
+            width: auto;
+            margin-right: 10px;
+            margin-bottom: 0;
+        }
+
+        .balvirt-portfolio-field {
+            margin-top: 10px;
+        }
+
+        .balvirt-portfolio-label {
+            display: inline;
+            font-weight: normal;
+        }
+
+        .balvirt-help-text {
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .balvirt-contact-section {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<!-- Navigation Bar - CSS removed as requested -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-section">
+                <!-- Balvirt Logo - Tumhara original logo yaha lagega -->
+                <img src="images/logo1.png" alt="Balvirt Logo" class="logo-img">
+                <!-- Text comment out kar diya hai, sirf logo dikhega -->
+            </div>
+
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="home.html" class="nav-link">Home</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a href="services.html" class="nav-link">
+                        Services <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="services.html#implementation">NetSuite Implementation</a>
+                        <a href="services.html#customization">NetSuite Customization</a>
+                        <a href="services.html#optimization">NetSuite Optimization</a>
+                        <a href="services.html#integration">NetSuite Integration</a>
+                        <a href="services.html#support">NetSuite Support</a>
+                        <a href="services.html#data-migration">NetSuite Data Migration</a>
+                        <a href="services.html#app-development">Application Development</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a href="industries.html" class="nav-link">
+                        Industries <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="industries.html#manufacturing">Manufacturing</a>
+                        <a href="industries.html#retail">Retail & eCommerce</a>
+                        <a href="industries.html#wholesale">Wholesale Distribution</a>
+                        <a href="industries.html#automotive">Automotive DMS</a>
+                        <a href="industries.html#ecommerce">E-commerce</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a href="technology.html" class="nav-link">
+                        Technology<i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="technology.html#netsuite">NetSuite</a>
+                        <a href="technology.html#celigo">Celigo</a>
+                        <a href="technology.html#integration">Integration</a>
+                        <a href="technology.html#android">Android App Development</a>
+                        <a href="technology.html#website">Website Development</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a href="why-us.html" class="nav-link">
+                        Why-us<i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="why-us.html#team">Experienced Team</a>
+                        <a href="why-us.html#solutions">Tailored Solutions</a>
+                        <a href="why-us.html#support">End-to-End Support</a>
+                        <a href="why-us.html#track-record">Proven Track Record</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a href="carrers.html" class="nav-link">
+                        Careers <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="carrers.html#freshers">Opportunities for Freshers</a>
+                        <a href="carrers.html#internships">Internship Programs</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a href="about.html" class="nav-link">
+                        About<i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="about.html#who-we-are">Who We Are</a>
+                        <a href="about.html#mission">Mission & Vision</a>
+                        <a href="about.html#values">Core Values</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a href="insights.html" class="nav-link">
+                        Insights <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="insights.html#youtube"><i class="fab fa-youtube"></i> YouTube Videos</a>
+                        <a href="insights.html#achievements"><i class="fas fa-trophy"></i> Achievements</a>
+                        <a href="insights.html#webinars"><i class="fas fa-chalkboard-teacher"></i> Webinars</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a href="contact.html" class="contact-btn">Contact</a>
+                </li>
+            </ul>
+
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+<body>
+    <h1 style="margin-top: 80px;text-align: center;color: navy;">Get In Touch</h1>
+
+    <div class="balvirt-container">
+        <section class="balvirt-contact-section">
+            <!-- Contact Form -->
+            <div class="balvirt-contact-form-box">
+                <h3 class="balvirt-section-title">Send Us a Message</h3>
+
+                <!-- Contact Form -->
+                <form name="contact" method="POST" netlify="true" class="balvirt-contact-form" id="contactForm">
+                    <input type="hidden" name="form-name" value="contact">
+                    
+                    <input type="text" name="name" placeholder="Your Name" class="balvirt-input" required>
+                    <input type="email" name="email" placeholder="Your Email" class="balvirt-input" required>
+                    <input type="text" name="phone" placeholder="Phone Number" class="balvirt-input" required>
+                    <textarea name="message" rows="4" placeholder="Your Message" class="balvirt-textarea" required></textarea>
+                    <button type="submit" class="balvirt-btn balvirt-submit-btn">Send Message</button>
+                </form>
+
+                <p id="contactMsg" class="balvirt-success-msg balvirt-hidden">
+                    <i class="fas fa-check-circle"></i> Thank you for your message! We will get back to you soon.
+                </p>
+                <button id="openHireForm" class="balvirt-btn balvirt-hire-btn">Apply for Job</button>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="balvirt-contact-info-box">
+                <h3 class="balvirt-section-title">Contact Information</h3>
+                <p class="balvirt-contact-info-item"><b>Address:</b> Hirai Estate, Adarshnagar, Ghulewadi Tal-Sangamner, Dist-Ahilyanagar, Pin-422605</p>
+                <p class="balvirt-contact-info-item"><b>Email:</b> <a href="mailto:contact@balvirt.com" class="balvirt-contact-link">contact@balvirt.com</a></p>
+                <p class="balvirt-contact-info-item"><b>Phone:</b> +91 9665521708</p>
+
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.123456789!2d74.1753771!3d19.612716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdd010045ac2eb1%3A0xb295b09394e63341!2sHirai%20Estate!5e0!3m2!1sen!2sin!4v1695980000000!5m2!1sen!2sin" 
+                    width="100%" height="200" 
+                    class="balvirt-map" 
+                    allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </section>
+    </div>
+
+    <!-- Hire Form Modal -->
+    <div class="balvirt-modal" id="hireModal">
+        <div class="balvirt-modal-content">
+            <span class="balvirt-close-btn" id="closeHireModal">&times;</span>
+            <h2 class="balvirt-modal-title">Apply for Job</h2>
+
+            <!-- Hire Form -->
+            <form name="hire" method="POST" netlify="true" enctype="multipart/form-data" class="balvirt-hire-form" id="hireForm">
+                <input type="hidden" name="form-name" value="hire">
+                
+                <div class="balvirt-form-group">
+                    <label for="jobRole" class="balvirt-label">Select Job Role</label>
+                    <select id="jobRole" name="jobRole" class="balvirt-select" required>
+                        <option value="">Select a role</option>
+                        <option value="full-stack-developer">Full Stack Developer</option>
+                        <option value="support-specialist">Support Specialist</option>
+                        <option value="quality-analyst">Quality Analyst</option>
+                        <option value="digital-marketing-analyst">Digital Marketing Analyst</option>
+                    </select>
+                </div>
+
+                <div class="balvirt-form-group">
+                    <label for="experienceLevel" class="balvirt-label">Experience Level</label>
+                    <select id="experienceLevel" name="experienceLevel" class="balvirt-select" required>
+                        <option value="">Select experience level</option>
+                        <option value="fresher">Fresher (0-1 years)</option>
+                        <option value="junior">Junior (1-3 years)</option>
+                        <option value="mid-level">Mid-Level (3-5 years)</option>
+                        <option value="senior">Senior (5+ years)</option>
+                    </select>
+                </div>
+
+                <!-- Common Fields -->
+                <div id="commonFields">
+                    <input type="text" name="fullName" placeholder="Full Name" class="balvirt-input" required>
+                    <input type="email" name="email" placeholder="Email Address" class="balvirt-input" required>
+                    <input type="text" name="phone" placeholder="Phone Number" class="balvirt-input" required>
+                    
+                    <!-- Additional fields based on experience level -->
+                    <div id="experiencedFields" class="balvirt-hidden">
+                        <input type="text" name="yearsExperience" placeholder="Years of Experience" class="balvirt-input">
+                        <input type="text" name="currentCompany" placeholder="Current Company" class="balvirt-input">
+                        <input type="text" name="currentPosition" placeholder="Current Position" class="balvirt-input">
+                        <input type="text" name="noticePeriod" placeholder="Notice Period (in days)" class="balvirt-input">
+                        <input type="text" name="currentSalary" placeholder="Current Salary (per annum)" class="balvirt-input">
+                        <input type="text" name="expectedSalary" placeholder="Expected Salary (per annum)" class="balvirt-input">
+                    </div>
+                    
+                    <div id="fresherFields" class="balvirt-hidden">
+                        <input type="text" name="collegeUniversity" placeholder="College/University" class="balvirt-input">
+                        <input type="text" name="qualification" placeholder="Qualification/Degree" class="balvirt-input">
+                        <input type="text" name="graduationYear" placeholder="Year of Graduation" class="balvirt-input">
+                        <input type="text" name="skills" placeholder="Key Skills (comma separated)" class="balvirt-input">
+                    </div>
+
+                    <!-- Portfolio Section -->
+                    <div id="portfolioSection" class="balvirt-hidden">
+                        <div class="balvirt-form-group">
+                            <label class="balvirt-label">Portfolio (Recommended for Fresher & Junior)</label>
+                            <div class="balvirt-portfolio-option">
+                                <input type="radio" id="portfolioLink" name="portfolioType" value="link" class="balvirt-portfolio-radio">
+                                <label for="portfolioLink" class="balvirt-portfolio-label">Portfolio Link</label>
+                            </div>
+                            <div class="balvirt-portfolio-option">
+                                <input type="radio" id="portfolioFile" name="portfolioType" value="file" class="balvirt-portfolio-radio">
+                                <label for="portfolioFile" class="balvirt-portfolio-label">Upload Portfolio File</label>
+                            </div>
+                            <div class="balvirt-portfolio-option">
+                                <input type="radio" id="noPortfolio" name="portfolioType" value="none" checked class="balvirt-portfolio-radio">
+                                <label for="noPortfolio" class="balvirt-portfolio-label">No Portfolio</label>
+                            </div>
+                            
+                            <div id="portfolioLinkField" class="balvirt-portfolio-field balvirt-hidden">
+                                <input type="url" name="portfolioLink" placeholder="https://yourportfolio.com" class="balvirt-input">
+                                <small class="balvirt-help-text">GitHub, Behance, Personal website, etc.</small>
+                            </div>
+                            
+                            <div id="portfolioFileField" class="balvirt-portfolio-field balvirt-hidden">
+                                <input type="file" name="portfolioFile" accept=".pdf,.zip,.doc,.docx" class="balvirt-input">
+                                <small class="balvirt-help-text">PDF, ZIP, DOC files (max 10MB)</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <textarea name="coverLetter" rows="4" placeholder="Cover Letter (Why you're a good fit for this role)" class="balvirt-textarea" required></textarea>
+                    
+                    <div class="balvirt-form-group">
+                        <label class="balvirt-label">Upload Resume (PDF only, max 5MB)</label>
+                        <input type="file" name="resume" accept=".pdf" class="balvirt-input" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="balvirt-btn balvirt-application-btn">Submit Application</button>
+                <p id="hireMsg" class="balvirt-success-msg balvirt-hidden">
+                    <i class="fas fa-check-circle"></i> Thank you for your application! We will get back to you soon.
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded - initializing contact form functionality');
+            
+            // Modal functionality
+            const openHireFormBtn = document.getElementById('openHireForm');
+            const hireModal = document.getElementById('hireModal');
+            const closeHireModalBtn = document.getElementById('closeHireModal');
+            
+            if (openHireFormBtn && hireModal) {
+                openHireFormBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    hireModal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                });
+                
+                if (closeHireModalBtn) {
+                    closeHireModalBtn.addEventListener('click', () => {
+                        hireModal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    });
+                }
+                
+                window.addEventListener('click', (e) => {
+                    if (e.target === hireModal) {
+                        hireModal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+
+            // Experience level toggle
+            const experienceLevelSelect = document.getElementById('experienceLevel');
+            const fresherFields = document.getElementById('fresherFields');
+            const experiencedFields = document.getElementById('experiencedFields');
+            const portfolioSection = document.getElementById('portfolioSection');
+            
+            if (experienceLevelSelect) {
+                experienceLevelSelect.addEventListener('change', () => {
+                    const selectedValue = experienceLevelSelect.value;
+                    
+                    // Hide all fields first
+                    if (fresherFields) fresherFields.classList.add('balvirt-hidden');
+                    if (experiencedFields) experiencedFields.classList.add('balvirt-hidden');
+                    if (portfolioSection) portfolioSection.classList.add('balvirt-hidden');
+                    
+                    // Show relevant fields
+                    if (selectedValue === 'fresher') {
+                        if (fresherFields) fresherFields.classList.remove('balvirt-hidden');
+                        if (portfolioSection) portfolioSection.classList.remove('balvirt-hidden');
+                    } else if (selectedValue === 'junior') {
+                        if (experiencedFields) experiencedFields.classList.remove('balvirt-hidden');
+                        if (portfolioSection) portfolioSection.classList.remove('balvirt-hidden');
+                    } else if (selectedValue === 'mid-level' || selectedValue === 'senior') {
+                        if (experiencedFields) experiencedFields.classList.remove('balvirt-hidden');
+                    }
+                });
+            }
+
+            // Portfolio type toggle
+            const portfolioLinkRadio = document.getElementById('portfolioLink');
+            const portfolioFileRadio = document.getElementById('portfolioFile');
+            const noPortfolioRadio = document.getElementById('noPortfolio');
+            const portfolioLinkField = document.getElementById('portfolioLinkField');
+            const portfolioFileField = document.getElementById('portfolioFileField');
+            
+            if (portfolioLinkRadio) {
+                portfolioLinkRadio.addEventListener('change', () => {
+                    if (portfolioLinkField) portfolioLinkField.classList.remove('balvirt-hidden');
+                    if (portfolioFileField) portfolioFileField.classList.add('balvirt-hidden');
+                });
+            }
+            
+            if (portfolioFileRadio) {
+                portfolioFileRadio.addEventListener('change', () => {
+                    if (portfolioFileField) portfolioFileField.classList.remove('balvirt-hidden');
+                    if (portfolioLinkField) portfolioLinkField.classList.add('balvirt-hidden');
+                });
+            }
+            
+            if (noPortfolioRadio) {
+                noPortfolioRadio.addEventListener('change', () => {
+                    if (portfolioLinkField) portfolioLinkField.classList.add('balvirt-hidden');
+                    if (portfolioFileField) portfolioFileField.classList.add('balvirt-hidden');
+                });
+            }
+
+            // Form submission handling - PREVENT DEFAULT REDIRECT
+            const contactForm = document.getElementById('contactForm');
+            const hireForm = document.getElementById('hireForm');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Show success message immediately
+                    const contactMsg = document.getElementById('contactMsg');
+                    if (contactMsg) {
+                        contactMsg.classList.remove('balvirt-hidden');
+                    }
+                    
+                    // Submit form after showing message
+                    setTimeout(() => {
+                        this.submit();
+                    }, 100);
+                    
+                    // Hide message after 5 seconds
+                    setTimeout(() => {
+                        if (contactMsg) {
+                            contactMsg.classList.add('balvirt-hidden');
+                        }
+                    }, 5000);
+                });
+            }
+            
+            if (hireForm) {
+                hireForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Show success message immediately
+                    const hireMsg = document.getElementById('hireMsg');
+                    if (hireMsg) {
+                        hireMsg.classList.remove('balvirt-hidden');
+                    }
+                    
+                    // Submit form after showing message
+                    setTimeout(() => {
+                        this.submit();
+                    }, 100);
+                    
+                    // Hide message and close modal after 3 seconds
+                    setTimeout(() => {
+                        if (hireMsg) {
+                            hireMsg.classList.add('balvirt-hidden');
+                        }
+                        if (hireModal) {
+                            hireModal.style.display = 'none';
+                            document.body.style.overflow = 'auto';
+                        }
+                    }, 3000);
+                });
+            }
+
+            console.log('Contact form functionality initialized successfully');
+        });
+    </script>
+       <!-- Footer
+ Footer Section -->
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="container">
+                <div class="footer-content">
+                    <!-- Company Info -->
+                    <div class="footer-section">
+                        <div class="footer-logo">
+                            <img src="images/logo1.jpg" alt="Balvirt Logo">
+                            <!-- <span class="logo-text">Bal<span class="virt">virt</span>.com</span> -->
+                        </div>
+                        <p class="footer-desc">Your trusted partner for NetSuite ERP solutions and digital
+                            transformation services. We help businesses achieve operational excellence through
+                            innovative technology solutions.</p>
+                        <div id="logo-of-fotter">
+                            <span id="linkedin">
+                                <a href="https://www.linkedin.com/company/balasaheb-it-solution/posts/?feedView=all"
+                                    class="social-link" target="_blank">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </span>
+
+                            <span id="youtube">
+                                <a href="https://www.youtube.com/@BalasahebITSolution" class="social-link"
+                                    target="_blank">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="footer-section">
+                        <h3 class="footer-title">Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="home.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                            <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+                            <li><a href="industries.html"><i class="fas fa-chevron-right"></i> Industries</a></li>
+                            <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                            <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Services -->
+                    <div class="footer-section">
+                        <h3 class="footer-title">Our Services</h3>
+                        <ul class="footer-links">
+                            <li><a href="services.html#implementation"><i class="fas fa-chevron-right"></i> NetSuite
+                                    Implementation</a></li>
+                            <li><a href="services.html#customization"><i class="fas fa-chevron-right"></i> NetSuite
+                                    Customization</a></li>
+                            <li><a href="services.html#integration"><i class="fas fa-chevron-right"></i> NetSuite
+                                    Integration</a></li>
+                            <li><a href="services.html#support"><i class="fas fa-chevron-right"></i> NetSuite
+                                    Support</a></li>
+                            <li><a href="services.html#app-development"><i class="fas fa-chevron-right"></i> App
+                                    Development</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="footer-section">
+                        <h3 class="footer-title">Contact Info</h3>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <a href="https://www.google.com/maps?q=Hirai+Estate,+AadarshNagar,+Ghulewadi,+Tal-Sangamner,+Dist-Ahilyanagar,+Pin-422605"
+                                        target="_blank" style="text-decoration: none; color: inherit;">
+                                        <span>Hirai Estate, Aadarshnagar, Ghulewadi</span><br>
+                                        <span>Tal-Sangamner,Dist-Ahilyanagar,Pin-422605</span>
+                                    </a>
+                                </div>
+
+
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <span><a href="tel:+919665521708"
+                                            style="text-decoration: underline; color: inherit;">+91
+                                            9665521708</a></span>
+
+
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <span><a href="mailto:contact@balvirt.com"
+                                            style="text-decoration: underline; color: inherit;">contact@balvirt.com</a></span>
+
+
+                                </div>
+                            </div>
+                            <!-- <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                             <div>
+                                <span>Mon - Fri: 9:00 AM - 6:00 PM</span>
+                                <span>Sat: 10:00 AM - 2:00 PM</span>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="footer-section">
+    <h3 class="footer-title" style="font-size: larger; " id="gold">Newsletter</h3>
+    <p class="newsletter-desc" style="font-size: larger; color: white;">
+        Subscribe to our newsletter for the latest updates and insights.
+    </p>
+
+    <!-- Netlify Form Start -->
+    <form method="POST" action="php/newsletter.php" class="newsletter-form">
+        <div class="input-group">
+            <input type="email" name="email" placeholder="Enter your email" 
+                style="font-size: larger; color: white;" required>
+            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </form>
+   
+
+   
+
+                   
+                    <!-- Footer Bottom -->
+                    <div class="footer-bottom">
+                        <div class="container">
+                            <div class="footer-bottom-content">
+
+                                
+
+                            </div>
+                            <p id="footer" style="text-align: center;">&copy; 2025 Balvirt </p>
+                        </div>
+                    </div>
+                    <!-- <div>
+                                    <p id="footer">&copy; 2025 Balvirt IT Solutions. </p>
+                                </div> -->
+
+                    <!-- Scroll to Top Button -->
+                    <button class="scroll-to-top">
+                        <i class="fas fa-chevron-up"></i>
+                    </button>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="script.js"></script>
+        <script src="js/newsletter.js"></script>
+</body>
+</html>
