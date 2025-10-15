@@ -1,0 +1,201 @@
+         .balvirt-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .balvirt-contact-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .balvirt-contact-form-box, .balvirt-contact-info-box {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .balvirt-section-title {
+            color: #001f3f;
+            margin-bottom: 20px;
+            font-size: 24px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .balvirt-input, .balvirt-textarea, .balvirt-select {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+
+        .balvirt-input:focus, .balvirt-textarea:focus, .balvirt-select:focus {
+            border-color: #001f3f;
+            outline: none;
+        }
+
+        .balvirt-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .balvirt-btn {
+            background-color: #001f3f;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .balvirt-btn:hover {
+            background-color: #003366;
+        }
+
+        .balvirt-hire-btn {
+            background-color: #28a745;
+            margin-top: 15px;
+        }
+
+        .balvirt-hire-btn:hover {
+            background-color: #218838;
+        }
+
+        .balvirt-contact-info-item {
+            margin-bottom: 15px;
+        }
+
+        .balvirt-contact-link {
+            color: #001f3f;
+            text-decoration: none;
+        }
+
+        .balvirt-contact-link:hover {
+            text-decoration: underline;
+        }
+
+        .balvirt-map {
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        /* Modal Styles */
+        .balvirt-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .balvirt-modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .balvirt-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .balvirt-close-btn:hover {
+            color: #000;
+        }
+
+        .balvirt-modal-title {
+            color: #001f3f;
+            margin-bottom: 20px;
+        }
+
+        .balvirt-hidden {
+            display: none;
+        }
+
+        .balvirt-success-msg {
+            color: #28a745;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f8fff9;
+            border-radius: 5px;
+            border-left: 4px solid #28a745;
+        }
+
+        .balvirt-error-msg {
+            color: #dc3545;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #fff8f9;
+            border-radius: 5px;
+            border-left: 4px solid #dc3545;
+        }
+
+        .balvirt-form-group {
+            margin-bottom: 20px;
+        }
+
+        .balvirt-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #001f3f;
+        }
+
+        .balvirt-portfolio-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .balvirt-portfolio-radio {
+            width: auto;
+            margin-right: 10px;
+            margin-bottom: 0;
+        }
+
+        .balvirt-portfolio-field {
+            margin-top: 10px;
+        }
+
+        .balvirt-portfolio-label {
+            display: inline;
+            font-weight: normal;
+        }
+
+        .balvirt-help-text {
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .balvirt-contact-section {
+                flex-direction: column;
+            }
+        }

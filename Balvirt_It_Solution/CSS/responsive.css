@@ -1,0 +1,733 @@
+ /* ===== RESPONSIVE STYLES ===== */
+
+/* Large Screens (TVs, Large Desktops) - 1400px and up */
+@media screen and (min-width: 1400px) {
+    .nav-container {
+        max-width: 1600px;
+        padding: 0 40px;
+    }
+    
+    .hero-slider {
+        height: 80vh;
+        max-height: 900px;
+    }
+    
+    .services-list,
+    .content-columns {
+        max-width: 1300px;
+    }
+    
+    .footer-content {
+        max-width: 1600px;
+    }
+}
+
+/* Standard Desktops & Laptops - 1200px to 1399px */
+@media screen and (min-width: 1200px) and (max-width: 1399px) {
+    .nav-container {
+        max-width: 1200px;
+        padding: 0 30px;
+    }
+    
+    .hero-slider {
+        height: 75vh;
+    }
+    
+    .services-list {
+        max-width: 1100px;
+    }
+}
+
+/* Small Laptops & Large Tablets - 992px to 1199px */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .nav-container {
+        padding: 0 25px;
+    }
+    
+    .nav-link {
+        padding: 0 15px;
+        font-size: 14px;
+    }
+    
+    .hero-slider {
+        height: 65vh;
+    }
+    
+    .services-list {
+        max-width: 900px;
+    }
+    
+    .service-info,
+    .industry-content {
+        padding: 0 20px;
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+}
+
+/* Tablets & Small Laptops - 768px to 991px */
+@media screen and (max-width: 991px) {
+    .nav-container {
+        padding: 0 20px;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 80px;
+        flex-direction: column;
+        background-color: white;
+        width: 100%;
+        text-align: left;
+        transition: 0.3s;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px 0;
+        height: auto;
+        gap: 0;
+    }
+
+    .nav-item {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .nav-link {
+        padding: 15px 30px;
+        border-bottom: 1px solid #f0f0f0;
+        border-left: 4px solid transparent;
+        height: auto;
+        justify-content: space-between;
+        width: 100%;
+        font-size: 16px;
+        border-bottom: 3px solid transparent !important;
+    }
+
+    .nav-link:hover, .nav-link.active {
+        border-bottom: 1px solid #f0f0f0 !important;
+        border-left: 4px solid #0074D9;
+        background-color: #f8f9fa;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .dropdown-content {
+        position: static;
+        box-shadow: none;
+        display: none;
+        width: 100%;
+        border-radius: 0;
+        border-top: none;
+        background-color: #f8f9fa;
+    }
+
+    .dropdown.active .dropdown-content {
+        display: block;
+    }
+
+    .contact-btn {
+        margin: 20px 30px 0;
+        width: calc(100% - 60px);
+        display: block;
+        text-align: center;
+    }
+
+    .hamburger {
+        display: block;
+    }
+    
+    .hero-slider {
+        height: 60vh;
+    }
+    
+    .service-box, .industry-row {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .service-box.reverse, .industry-row.reverse {
+        flex-direction: column;
+    }
+    
+    .content-columns {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 20px;
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .platform-item {
+        flex-direction: column;
+    }
+    
+    .platform-item:nth-child(even) {
+        flex-direction: column;
+    }
+    
+    .platform-image {
+        min-height: 250px;
+        order: -1;
+    }
+}
+
+/* Mobile Phones - 767px and down */
+@media screen and (max-width: 767px) {
+    .nav-container {
+        padding: 0 15px;
+    }
+    
+    .hero-slider {
+        height: 50vh;
+    }
+    
+    .slider-nav {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .prev {
+        left: 15px;
+    }
+    
+    .next {
+        right: 15px;
+    }
+    
+    .vision-section {
+        padding: 60px 20px;
+    }
+    
+    .services, .industries-section {
+        padding: 60px 20px;
+    }
+    
+    .service-item {
+        padding: 25px;
+        margin-bottom: 25px;
+    }
+    
+    .service-info, .industry-content {
+        padding: 0 15px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 0 20px;
+    }
+    
+    .footer-section {
+        text-align: center;
+    }
+    
+    .footer-logo {
+        justify-content: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    .choose-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .career-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .about-row, .about-row.reverse-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .stats-container {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .stats-circle {
+        width: 100px;
+        height: 100px;
+    }
+
+    .section-img img {
+        height: 250px;
+        max-width: 100%;
+    }
+    
+    #values {
+        flex-direction: column;
+        margin: 30px 20px;
+    }
+    
+    #values .values-content {
+        order: 2;
+    }
+    
+    #values .section-img {
+        order: 1;
+    }
+    
+    .contact-container {
+        flex-direction: column;
+    }
+    
+    .contact-form,
+    .contact-from {
+        flex: 1 1 100%;
+    }
+}
+
+/* Small Mobile Phones - 575px and down */
+@media screen and (max-width: 575px) {
+    .nav-container {
+        padding: 0 10px;
+    }
+    
+    .hero-slider {
+        height: 45vh;
+    }
+    
+    .slider-dots {
+        bottom: 20px;
+    }
+    
+    .dot {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .content-box {
+        padding: 20px;
+    }
+    
+    .footer-main {
+        padding: 40px 0 20px;
+    }
+    
+    .footer-logo {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .modal-content {
+        margin: 5% auto;
+        padding: 20px;
+        width: 95%;
+    }
+    
+    .stats-circle {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* Extra Small Mobile Phones - 479px and down */
+@media screen and (max-width: 479px) {
+    .hero-slider {
+        height: 40vh;
+    }
+    
+    .slider-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        padding: 8px;
+    }
+    
+    .services, .industries-section {
+        padding: 50px 15px;
+    }
+    
+    .service-item {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .service-info li, .industry-content li {
+        font-size: 14px;
+        padding-left: 20px;
+    }
+    
+    .footer-content {
+        padding: 0 15px;
+    }
+    
+    .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .stats-circle {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+/* Very Small Mobile Phones - 359px and down */
+@media screen and (max-width: 359px) {
+    .hero-slider {
+        height: 35vh;
+    }
+    
+    .content-box {
+        padding: 15px;
+    }
+    
+    .footer-logo .logo-text {
+        font-size: 18px;
+    }
+    
+    .stats-container {
+        gap: 10px;
+    }
+    
+    .stats-circle {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* Landscape Mobile Devices */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .hero-slider {
+        height: 100vh;
+    }
+    
+    .slide-content {
+        top: 55%;
+    }
+    
+    .nav-menu {
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+    
+    .services-hero, .industries-hero {
+        padding: 100px 0 40px;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .nav-link:hover {
+        border-bottom: 3px solid transparent;
+        background-color: transparent;
+    }
+    
+    .nav-link:active {
+        border-bottom: 3px solid #0074D9;
+        background-color: #f8f9fa;
+    }
+    
+    .service-item:hover,
+    .platform-item:hover,
+    .choose-img img:hover {
+        transform: none;
+    }
+    
+    .service-item:active,
+    .platform-item:active {
+        transform: translateY(-2px);
+    }
+    
+    .slider-nav {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* Reduced Motion for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .slide {
+        transition: opacity 0.3s ease-in-out;
+    }
+}
+
+/* Mobile Swipe Indicator */
+@media (max-width: 768px) {
+    .hero-slider::after {
+        content: '← Swipe →';
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        font-size: 14px;
+        background: rgba(0,0,0,0.5);
+        padding: 8px 16px;
+        border-radius: 20px;
+        z-index: 10;
+        animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+        0%, 100% { opacity: 0.7; }
+        50% { opacity: 1; }
+    }
+}
+
+/* Dropdown Mobile Fixes */
+@media screen and (max-width: 992px) {
+    .dropdown-content {
+        display: none;
+        position: static;
+        box-shadow: none;
+        background-color: #f8f9fa;
+        border-top: none;
+        border-radius: 0;
+    }
+    
+    .dropdown-content a {
+        padding-left: 50px;
+        border-left: 3px solid transparent;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .dropdown-content a:hover {
+        border-left: 3px solid #0074D9;
+        background-color: #e9ecef;
+    }
+    
+    .dropdown.active .dropdown-content {
+        display: block !important;
+    }
+    
+    .dropdown.active .nav-link i {
+        transform: rotate(180deg);
+    }
+}
+
+/* Insight Page  */
+/* ===== NAVBAR RESPONSIVE FIXES ===== */
+
+/* 14-inch Laptops (1280px - 1440px) */
+@media screen and (min-width: 1280px) and (max-width: 1440px) {
+    .nav-container {
+        max-width: 1200px;
+        padding: 0 20px;
+    }
+    
+    .nav-link {
+        padding: 0 18px;
+        font-size: 15px;
+    }
+    
+    .logo-img {
+        height: 40px;
+    }
+    
+    .logo-text {
+        font-size: 22px;
+    }
+    
+    .contact-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+        margin-left: 15px;
+    }
+}
+
+/* Large TVs (70-inch+) - 1920px and above */
+@media screen and (min-width: 1920px) {
+    .nav-container {
+        max-width: 1800px;
+        padding: 0 60px;
+    }
+    
+    .nav-link {
+        padding: 0 25px;
+        font-size: 18px;
+    }
+    
+    .logo-img {
+        height: 55px;
+    }
+    
+    .logo-text {
+        font-size: 28px;
+    }
+    
+    .contact-btn {
+        padding: 12px 30px;
+        font-size: 16px;
+        margin-left: 30px;
+    }
+    
+    .navbar {
+        height: 90px;
+    }
+    
+    .nav-container {
+        height: 90px;
+    }
+}
+
+/* Extra Large TVs (2500px+) */
+@media screen and (min-width: 2500px) {
+    .nav-container {
+        max-width: 2200px;
+        padding: 0 80px;
+    }
+    
+    .nav-link {
+        padding: 0 30px;
+        font-size: 20px;
+    }
+    
+    .logo-img {
+        height: 65px;
+    }
+    
+    .logo-text {
+        font-size: 32px;
+    }
+    
+    .navbar {
+        height: 100px;
+    }
+    
+    .nav-container {
+        height: 100px;
+    }
+}
+
+/* ===== FOOTER RESPONSIVE FIXES ===== */
+
+/* 14-inch Laptops */
+@media screen and (min-width: 1280px) and (max-width: 1440px) {
+    .footer-content {
+        max-width: 1200px;
+        gap: 30px;
+    }
+    
+    .footer-section {
+        padding: 0 15px;
+    }
+}
+
+/* Large TVs */
+@media screen and (min-width: 1920px) {
+    .footer-content {
+        max-width: 1800px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 50px;
+        padding: 0 60px;
+    }
+    
+    .footer-main {
+        padding: 80px 0 40px;
+    }
+    
+    .footer-logo img {
+        height: 60px;
+    }
+    
+    .footer-logo .logo-text {
+        font-size: 28px;
+    }
+    
+    .footer-title {
+        font-size: 1.5rem;
+    }
+    
+    .footer-links a,
+    .footer-desc,
+    .contact-item span {
+        font-size: 16px;
+    }
+}
+
+/* Extra Large TVs */
+@media screen and (min-width: 2500px) {
+    .footer-content {
+        max-width: 2200px;
+        padding: 0 80px;
+    }
+    
+    .footer-main {
+        padding: 100px 0 50px;
+    }
+    
+    .footer-logo img {
+        height: 70px;
+    }
+    
+    .footer-logo .logo-text {
+        font-size: 32px;
+    }
+}
+
+/* ===== CONTENT SCALING FOR LARGE SCREENS ===== */
+
+@media screen and (min-width: 1920px) {
+    .vision-content h2,
+    .services h2,
+    .industries-section h2 {
+        font-size: 3rem;
+    }
+    
+    .subtitle,
+    .section-intro {
+        font-size: 1.4rem;
+    }
+    
+    .content-box p,
+    .service-item p,
+    .industry-content p {
+        font-size: 1.1rem;
+    }
+    
+    .service-info h2,
+    .industry-content h3 {
+        font-size: 2.2rem;
+    }
+}
+
+/* Fix for mobile menu on large screens */
+@media screen and (min-width: 993px) {
+    .hamburger {
+        display: none !important;
+    }
+    
+    .nav-menu {
+        position: static !important;
+        flex-direction: row !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        height: 100% !important;
+    }
+    
+    .dropdown-content {
+        display: none !important;
+        position: absolute !important;
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: block !important;
+    }
+}
