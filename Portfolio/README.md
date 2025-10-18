@@ -2,7 +2,7 @@
 
 Welcome to my personal portfolio! 🚀  
 
-Check out my portfolio here: [tusharnagare.netlify.app](https://tusharnagare.netlify.app)
+Check out my portfolio here: [tusharnagare.netlify.app](https://tn-tusharnagare.netlify.app)
 
 ---
 
