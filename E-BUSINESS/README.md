@@ -66,7 +66,7 @@ It aims to simplify learning using web-based interactive quizzes.
 
 ## 👨‍💻 Developer
 **Tushar Nagare**  
-📩 Email: [tusharnagare@example.com](mailto:tusharnagare@example.com)  
+📩 Email: [tusharnagare@example.com](mailto:tusharnagare2006@gmail.com)  
 🌐 Portfolio: [https://tn-tusharnagare.netlify.app](https://tn-tusharnagare.netlify.app)  
 🔗 LinkedIn: [https://www.linkedin.com/in/tushar-nagare-5a17b9287/](https://www.linkedin.com/in/tushar-nagare-5a17b9287/)  
 🐙 GitHub: [https://github.com/Tushar-3612](https://github.com/Tushar-3612)
