@@ -73,10 +73,7 @@ It aims to simplify learning using web-based interactive quizzes.
 
 ---
 
-## 🏷️ License
-This project is open-source and available under the **MIT License**.
-
----
+ 
 
 ⭐ **If you like this project, don’t forget to star the repo!**  
 It motivates me to build more cool stuff like this 🚀
