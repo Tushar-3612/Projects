@@ -44,6 +44,8 @@ Students can test their knowledge, improve accuracy, and prepare for exams in a 
 
 ### 🏠 Home / Quiz Interface
  <img width="1904" height="1033" alt="Screenshot 2025-10-25 125950" src="https://github.com/user-attachments/assets/2b94c2dc-dd05-4b64-8216-89ef857c9660" />
+ <img width="1919" height="1012" alt="Screenshot 2025-10-25 131341" src="https://github.com/user-attachments/assets/23cc5d7b-2701-4e4c-b087-014467686ebc" />
+<img width="1919" height="1079" alt="Screenshot 2025-10-25 131412" src="https://github.com/user-attachments/assets/0d66abf6-6ed3-4301-a4a7-ff0c3e36ea2c" />
 
 
 ---
