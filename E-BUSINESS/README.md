@@ -43,7 +43,8 @@ Students can test their knowledge, improve accuracy, and prepare for exams in a 
 ## 📸 Screenshots
 
 ### 🏠 Home / Quiz Interface
-(Add a screenshot here — you can upload one in the GitHub repo)
+ <img width="1904" height="1033" alt="Screenshot 2025-10-25 125950" src="https://github.com/user-attachments/assets/2b94c2dc-dd05-4b64-8216-89ef857c9660" />
+
 
 ---
 
