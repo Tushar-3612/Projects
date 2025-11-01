@@ -296,6 +296,11 @@
             background: rgba(220, 53, 69, 0.1);
         }
 
+        .option.disabled {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
         .option-letter {
             width: 26px;
             height: 26px;
@@ -1523,6 +1528,9 @@
                     optionElement.classList.add('selected');
                 }
                 
+                // Re-enable pointer events for new question
+                optionElement.style.pointerEvents = 'auto';
+                
                 optionElement.innerHTML = `
                     <div class="option-letter">${String.fromCharCode(65 + optionIndex)}</div>
                     <div class="option-text">${option}</div>
@@ -1551,12 +1559,20 @@
 
         // Select an option with auto-advance
         function selectOption(optionIndex) {
+            // If already answered, do nothing
+            if (userAnswers[currentQuestion] !== null) return;
+            
             userAnswers[currentQuestion] = optionIndex;
             questionStatus[currentQuestion] = 'answered';
             
             // Update UI
             const options = document.querySelectorAll('.option');
             const question = questions[currentQuestion];
+            
+            // Disable all options to prevent further selection
+            options.forEach(option => {
+                option.style.pointerEvents = 'none';
+            });
             
             options.forEach((option, index) => {
                 option.classList.remove('selected', 'correct', 'incorrect');
@@ -1599,6 +1615,7 @@
 
         // Navigate to a specific question
         function navigateToQuestion(index) {
+            clearTimeout(autoAdvanceTimeout);
             loadQuestion(index);
         }
 
@@ -1663,6 +1680,7 @@
             const options = document.querySelectorAll('.option');
             options.forEach(option => {
                 option.classList.remove('selected', 'correct', 'incorrect');
+                option.style.pointerEvents = 'auto';
             });
             
             feedbackBox.classList.add('hidden');
