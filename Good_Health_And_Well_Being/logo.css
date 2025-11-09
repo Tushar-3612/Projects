@@ -1,0 +1,144 @@
+/* Reset margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #e3f2fd, #bbdefb);
+    color: #333;
+    padding: 0 20px;
+    line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #1976d2;
+    color: white;
+}
+
+header h1 {
+    font-size: 2.5em;
+    flex-grow: 1;
+}
+
+header img {
+    max-width: 100px;
+    height: auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #bbdefb;
+}
+
+/* Contact Section */
+#contact {
+    background-color: white;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+#contact h2 {
+    text-align: center;
+    color: #1976d2;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+}
+
+form input, form textarea {
+    padding: 12px;
+    font-size: 1em;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+form button {
+    padding: 12px;
+    font-size: 1.1em;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #1565c0;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 1em;
+    color: #555;
+    padding: 20px 0;
+    background-color: #1976d2;
+    color: white;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header img {
+        margin-top: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    form input, form textarea {
+        font-size: 0.9em;
+    }
+
+    form button {
+        font-size: 1em;
+    }
+}

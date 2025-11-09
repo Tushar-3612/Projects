@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Tracker: Sleep Plan</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="services.css">
+    <link rel="stylesheet" href="header.css">
+
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Main container for the 3 columns */
+        .body-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        /* Each column styling */
+        .body-column {
+            background-color: #f5f5f5; /* Light gray background */
+            border: 1px solid #ccc; /* Add border for table effect */
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            width: 30%; /* Three columns, each taking 30% width */
+            box-sizing: border-box; /* Include padding in width calculation */
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        /* Adjust column layout for smaller screens */
+        @media (max-width: 768px) {
+            .body-column {
+                width: 100%; /* Stack columns vertically */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.jpeg" alt="User Logo" class="user-logo">
+            <h1 class="header-title">Good Health and Well Being</h1>
+        </div>
+        <nav>
+            <div class="menu-icon" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="services.html">Services</a>
+                    <ul class="dropdown-content">
+                        <li><a href="routine.html">Routine</a></li>
+                        <li><a href="sleep.html">Sleep</a></li>
+                        <li><a href="meal.html">Meal Plan</a></li>
+                        <li><a href="stress.html">Stress & Anxiety Relief</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="body-content">
+        <div class="body-column">
+            <h2>Sleep Music</h2>
+            <p>Drift into a peaceful slumber with calming melodies that ease your mind:</p>
+            <ul>
+                <li>Track 1: <a href="https://youtu.be/vPhg6sc1Mk4?si=rh8IlYjbDGrof0SR" target="_blank">Ocean Waves</a></li>
+                <li>Track 2: <a href="https://youtu.be/biGZwXX67h8?si=gppLyFQ21V-O9eKI" target="_blank">Deep Sleep Harmony</a></li>
+            </ul>
+        </div>
+
+        <div class="body-column">
+            <h2>Meditation Music</h2>
+            <p>Unlock your inner peace and relax deeply with melodies crafted for meditation:</p>
+            <ul>
+                <li>Track 1: <a href="https://www.youtube.com/watch?v=aIIEI33EUqI" target="_blank">Mindfulness Melodies</a></li>
+                <li>Track 2: <a href="https://www.youtube.com/watch?v=eGAMRXIHmFo" target="_blank">Focused Breathing Tones</a></li>
+                <li>Track 3: <a href="https://www.youtube.com/watch?v=Qwfx0pzaqK0" target="_blank">Spiritual Awakening Sounds</a></li>
+            </ul>
+        </div>
+
+        <div class="body-column">
+            <h2>Sleep Stories</h2>
+            <p>Drift off to sleep with these soothing bedtime stories:</p>
+            <ul>
+                <li>Story 1: <a href="https://www.youtube.com/watch?v=09r8XdHRWe8" target="_blank">The Enchanted Forest</a></li>
+                <li>Story 2: <a href="https://www.youtube.com/watch?v=B5unCXpegAw" target="_blank">Journey Through the Stars</a></li>
+                <li>Story 3: <a href="https://www.youtube.com/watch?v=9BbOYdQ0lFU" target="_blank">The Whispering Winds</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Good Health and Well Being. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript for the menu toggle functionality
+        function toggleMenu() {
+            const nav = document.querySelector('nav ul');
+            const menuIcon = document.querySelector('.menu-icon');
+            nav.classList.toggle('show-menu');
+            menuIcon.classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>

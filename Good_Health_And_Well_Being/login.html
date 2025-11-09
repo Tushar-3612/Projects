@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Good Health Well Being - Login</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    /* Existing styles unchanged */
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      width: 100%;
+      max-width: 400px;
+      padding: 30px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    .header {
+      text-align: center;
+      color: #0072ff;
+      font-size: 24px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    .login-title {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+      font-size: 22px;
+    }
+    .form-group {
+      margin-bottom: 25px;
+      position: relative;
+    }
+    .material-icons {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #0072ff;
+      font-size: 24px;
+    }
+    .form-control {
+      width: 100%;
+      height: 45px;
+      padding-left: 45px;
+      font-size: 16px;
+      border: 2px solid #0072ff;
+      border-radius: 5px;
+      box-sizing: border-box;
+      transition: border 0.3s ease;
+    }
+    .form-control:focus {
+      border-color: #0056b3;
+      outline: none;
+    }
+    .btn {
+      width: 100%;
+      height: 50px;
+      font-size: 18px;
+      background-color: #0072ff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      color: #777;
+      font-size: 12px;
+      display: none;
+    }
+    @media (max-width: 600px) {
+      .container {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      Good Health and Well Being
+    </div>
+    <h2 class="login-title">Login</h2>
+    <form id="loginForm" method="POST">
+      <div class="form-group">
+        <i class="material-icons">account_circle</i>
+        <input type="text" id="username" name="username" class="form-control" placeholder="Username" required>
+      </div>
+      <div class="form-group">
+        <i class="material-icons">lock</i>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+      </div>
+      <button type="submit" class="btn">Login</button>
+    </form>
+    <div style="text-align: center; margin-top: 20px;">
+      <p>Don't have an account? <a href="register.html" style="color: #0072ff; text-decoration: underline;">Sign up here</a></p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2023 Good Health Well Being. All rights reserved.</p>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", async function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Collect form data
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      try {
+        // Send data to backend
+        const response = await fetch('http://localhost:3000/api/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, password }),
+        });
+
+        const result = await response.json();
+
+        if (response.status === 200) {
+          alert(result.message); // Login successful
+          window.location.href = "afterlogin.html"; // Redirect to a dashboard or homepage
+        } else {
+          alert(result.message || 'Invalid username or password'); // Error message
+        }
+      } catch (error) {
+        alert('Error connecting to the server. Please try again.');
+        console.error('Login error:', error);
+      }
+    });
+  </script>
+</body>
+</html>
