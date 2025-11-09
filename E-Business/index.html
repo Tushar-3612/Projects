@@ -1,0 +1,1966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="Logo.png" type="image/jpg">
+    <title>NPTEL Quiz Platform</title>
+      
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #6c63ff;
+            --secondary: #4a44c6;
+            --accent: #ff6584;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+            --danger: #dc3545;
+            --warning: #ffc107;
+            --info: #17a2b8;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+        }
+
+        /* Compact Form Styles */
+        .container {
+            max-width: 1100px;
+            width: 95%;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+
+        h1 {
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 2rem;
+        }
+
+        .tagline {
+            color: var(--dark);
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 8px;
+            padding: 12px 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            flex: 1;
+            min-width: 140px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .stat-card h3 {
+            color: var(--secondary);
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .stat-card .value {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .quiz-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .question-sidebar {
+            flex: 1;
+            min-width: 280px;
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            max-height: 500px;
+            overflow-y: auto;
+            position: sticky;
+            top: 15px;
+        }
+
+        .question-main {
+            flex: 2;
+            min-width: 280px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(28px, 1fr));
+            gap: 6px;
+            margin-bottom: 15px;
+        }
+
+        .question-nav-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light);
+            color: var(--dark);
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .question-nav-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .question-nav-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        .question-nav-btn.answered {
+            background: var(--success);
+            color: white;
+        }
+
+        .question-nav-btn.review {
+            background: var(--warning);
+            color: white;
+        }
+
+        .question-nav-btn.not-answered {
+            background: var(--danger);
+            color: white;
+        }
+
+        .question-nav-btn.not-visited {
+            background: var(--light);
+            color: var(--dark);
+        }
+
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.75rem;
+        }
+
+        .legend-color {
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+        }
+
+        .question-section {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .question-number {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .timer {
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--accent);
+            background: rgba(255, 101, 132, 0.1);
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+
+        .question-image {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .option {
+            padding: 12px 15px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-height: 50px;
+        }
+
+        .option:hover {
+            border-color: var(--primary);
+            background: rgba(108, 99, 255, 0.05);
+        }
+
+        .option.selected {
+            border-color: var(--primary);
+            background: rgba(108, 99, 255, 0.1);
+        }
+
+        .option.correct {
+            border-color: var(--success);
+            background: rgba(40, 167, 69, 0.1);
+        }
+
+        .option.incorrect {
+            border-color: var(--danger);
+            background: rgba(220, 53, 69, 0.1);
+        }
+
+        .option.disabled {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .option-letter {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--dark);
+            font-size: 0.85rem;
+        }
+
+        .option.selected .option-letter {
+            background: var(--primary);
+            color: white;
+        }
+
+        .option.correct .option-letter {
+            background: var(--success);
+            color: white;
+        }
+
+        .option.incorrect .option-letter {
+            background: var(--danger);
+            color: white;
+        }
+
+        .feedback-box {
+            margin-top: 15px;
+            padding: 12px 15px;
+            border-radius: 8px;
+            background: rgba(23, 162, 184, 0.1);
+            border-left: 4px solid var(--info);
+            font-size: 0.9rem;
+        }
+
+        .feedback-box.correct {
+            background: rgba(40, 167, 69, 0.1);
+            border-left-color: var(--success);
+        }
+
+        .feedback-box.incorrect {
+            background: rgba(220, 53, 69, 0.1);
+            border-left-color: var(--danger);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary);
+        }
+
+        .btn-secondary {
+            background: var(--light);
+            color: var(--dark);
+        }
+
+        .btn-secondary:hover {
+            background: #e9ecef;
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #218838;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: var(--dark);
+        }
+
+        .btn-warning:hover {
+            background: #e0a800;
+        }
+
+        .result-section {
+            display: none;
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .result-icon {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .result-title {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .result-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .result-stat {
+            text-align: center;
+        }
+
+        .result-stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .result-stat-label {
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+
+        .correct-stat .result-stat-value {
+            color: var(--success);
+        }
+
+        .wrong-stat .result-stat-value {
+            color: var(--danger);
+        }
+
+        .score-stat .result-stat-value {
+            color: var(--primary);
+        }
+
+        .time-stat .result-stat-value {
+            color: var(--info);
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                width: 98%;
+                padding: 10px;
+            }
+            
+            header {
+                padding: 12px 15px;
+                margin-bottom: 15px;
+            }
+            
+            h1 {
+                font-size: 1.7rem;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+            }
+            
+            .stat-card {
+                min-width: 100%;
+            }
+            
+            .quiz-container {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .question-sidebar {
+                min-width: 100%;
+                max-height: 300px;
+                position: relative;
+                top: 0;
+            }
+            
+            .question-main {
+                min-width: 100%;
+                padding: 15px;
+            }
+            
+            .question-nav {
+                grid-template-columns: repeat(auto-fill, minmax(26px, 1fr));
+            }
+            
+            .question-nav-btn {
+                width: 26px;
+                height: 26px;
+                font-size: 0.75rem;
+            }
+            
+            .controls {
+                flex-wrap: wrap;
+            }
+            
+            .btn {
+                flex: 1;
+                min-width: 110px;
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .question-image {
+                max-height: 220px;
+            }
+            
+            .option {
+                padding: 10px 12px;
+                min-height: 45px;
+            }
+        }
+
+        /* Desktop optimization */
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1300px;
+            }
+            
+            .question-sidebar {
+                min-width: 320px;
+            }
+            
+            .question-main {
+                min-width: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><b style="color: #4a44c6;"> E-Business </b></h1>
+            <p class="tagline">NPTEL 126 Questions Practice </p>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3>Total Questions</h3>
+                    <div class="value" id="total-questions">126</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Time Spent</h3>
+                    <div class="value" id="timer-display">00:00:00</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Current Score</h3>
+                    <div class="value" id="current-score">0</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="quiz-container">
+            <div class="question-sidebar">
+                <h3>Question Navigator</h3>
+                <div class="question-nav" id="question-nav">
+                    <!-- Question navigation buttons will be generated here -->
+                </div>
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #6c63ff;"></div>
+                        <span>Current</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #28a745;"></div>
+                        <span>Answered</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #ffc107;"></div>
+                        <span>Marked</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #dc3545;"></div>
+                        <span>Not Answered</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #f8f9fa;"></div>
+                        <span>Not Visited</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-main">
+                <div class="question-section">
+                    <div class="question-header">
+                        <div class="question-number" id="question-number">Question 1 of 126</div>
+                        <div class="timer" id="timer">00:00:00</div>
+                    </div>
+                    
+                    <img id="question-image" src="" alt="Question Image" class="question-image">
+                    
+                    <div class="options-container" id="options-container">
+                        <!-- Options will be generated here -->
+                    </div>
+                    
+                    <div class="feedback-box hidden" id="feedback-box">
+                        <!-- Feedback will be shown here -->
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <button class="btn btn-secondary" id="prev-btn">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <button class="btn btn-warning" id="mark-btn">
+                        <i class="fas fa-flag"></i> Mark for Review
+                    </button>
+                    <button class="btn btn-danger" id="clear-btn">
+                        <i class="fas fa-times"></i> Clear Response
+                    </button>
+                    <button class="btn btn-primary" id="next-btn">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="result-section" id="result-section">
+            <div class="result-icon">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <h2 class="result-title">Quiz Completed!</h2>
+            <p>You have successfully completed the NPTEL quiz. Here's your performance:</p>
+            
+            <div class="result-stats">
+                <div class="result-stat correct-stat">
+                    <div class="result-stat-value" id="correct-answers">0</div>
+                    <div class="result-stat-label">Correct</div>
+                </div>
+                <div class="result-stat wrong-stat">
+                    <div class="result-stat-value" id="wrong-answers">0</div>
+                    <div class="result-stat-label">Wrong</div>
+                </div>
+                <div class="result-stat score-stat">
+                    <div class="result-stat-value" id="final-score">0</div>
+                    <div class="result-stat-label">Score</div>
+                </div>
+                <div class="result-stat time-stat">
+                    <div class="result-stat-value" id="final-time">00:00:00</div>
+                    <div class="result-stat-label">Time</div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn btn-primary" id="review-btn">
+                    <i class="fas fa-redo"></i> Review Answers
+                </button>
+                <button class="btn btn-success" id="restart-btn">
+                    <i class="fas fa-play"></i> Start New Quiz
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // All 126 questions from your JSON data
+        const questions = [
+            {
+                "qNumber": 1,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a1q1.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 2,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a1q2.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 3,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a1q3.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 4,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a1q4.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 5,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a1q5.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 6,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a1q6.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 7,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a1q7.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 8,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a1q8.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 9,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a1q9.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 10,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a1q10.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 11,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a2q1.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 12,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a2q2.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 13,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a2q3.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 14,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a2q4.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 15,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a2q5.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 16,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a2q6.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 17,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a2q7.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 18,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a2q8.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 19,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a2q9.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 20,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a2q10.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 21,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a2q11.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 22,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a2q12.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 23,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a2q13.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 24,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a3q1.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 25,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a3q2.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 26,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a3q3.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 27,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a3q4.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 28,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a3q5.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 29,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a3q6.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 30,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a3q7.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 31,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a3q8.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 32,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a3q9.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 33,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a3q10.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 34,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a3q11.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 35,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a3q12.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 36,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a3q13.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 37,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a4q1.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 38,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a4q2.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 39,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a4q3.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 40,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a4q4.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 41,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a4q5.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 42,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a4q6.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 43,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a4q7.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 44,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a4q8.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 45,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a4q9.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 46,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a4q10.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 47,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a5q1.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 48,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a5q2.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 49,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a5q3.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 50,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a5q4.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 51,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a5q5.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 52,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a5q6.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 53,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a5q7.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 54,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a5q8.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 55,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a5q9.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 56,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a5q10.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 57,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a6q1.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 58,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a6q2.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 59,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a6q3.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 60,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a6q4.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 61,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a6q5.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 62,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a6q6.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 63,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a6q7.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 64,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a6q8.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 65,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a6q9.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 66,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a6q10.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 67,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a7q1.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 68,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a7q2.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 69,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a7q3.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 70,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a7q4.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 71,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a7q5.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 72,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a7q6.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 73,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a7q7.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 74,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a7q8.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 75,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a7q9.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 76,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a7q10.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 77,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a8q1.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 78,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a8q2.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 79,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a8q3.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 80,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a8q4.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 81,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a8q5.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 82,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a8q6.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 83,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a8q7.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 84,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a8q8.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 85,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a8q9.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 86,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a8q10.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 87,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a9q1.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 88,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a9q2.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 89,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a9q3.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 90,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a9q4.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 91,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a9q5.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 92,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a9q6.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 93,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a9q7.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 94,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a9q8.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 95,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a9q9.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 96,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a9q10.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 97,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a10q1.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 98,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a10q2.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 99,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a10q3.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 100,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a10q4.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 101,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a10q5.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 102,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a10q6.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 103,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a10q7.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 104,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a10q8.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 105,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a10q9.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 106,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a10q10.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 107,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a11q1.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 108,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a11q2.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 109,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a11q3.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 110,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a11q4.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 111,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a11q5.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 112,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a11q6.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 113,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a11q7.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 114,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a11q8.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 115,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a11q9.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 116,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a11q10.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 117,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a12q1.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 118,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a12q2.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            },
+            {
+                "qNumber": 119,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a12q3.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 120,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a12q4.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 121,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a12q5.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 3
+            },
+            {
+                "qNumber": 122,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a12q6.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 2
+            },
+            {
+                "qNumber": 123,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a12q7.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 124,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a12q8.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 125,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a12q9.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 1
+            },
+            {
+                "qNumber": 126,
+                "image": "https://storage.googleapis.com/swayam-node1-production.appspot.com/assets/img/noc23_mg88/a12q10.PNG",
+                "options": ["Option A", "Option B", "Option C", "Option D"],
+                "answer": 0
+            }
+        ];
+
+        // Quiz state
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = Array(questions.length).fill(null);
+        let questionStatus = Array(questions.length).fill('not-visited');
+        let timerInterval;
+        let seconds = 0;
+        let autoAdvanceTimeout;
+
+        // DOM elements
+        const questionNav = document.getElementById('question-nav');
+        const questionNumber = document.getElementById('question-number');
+        const questionImage = document.getElementById('question-image');
+        const optionsContainer = document.getElementById('options-container');
+        const feedbackBox = document.getElementById('feedback-box');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const markBtn = document.getElementById('mark-btn');
+        const clearBtn = document.getElementById('clear-btn');
+        const timerDisplay = document.getElementById('timer');
+        const currentScore = document.getElementById('current-score');
+        const resultSection = document.getElementById('result-section');
+        const correctAnswers = document.getElementById('correct-answers');
+        const wrongAnswers = document.getElementById('wrong-answers');
+        const finalScore = document.getElementById('final-score');
+        const finalTime = document.getElementById('final-time');
+        const reviewBtn = document.getElementById('review-btn');
+        const restartBtn = document.getElementById('restart-btn');
+
+        // Initialize the quiz
+        function initQuiz() {
+            createQuestionNav();
+            loadQuestion(currentQuestion);
+            startTimer();
+            updateScore();
+        }
+
+        // Create question navigation buttons
+        function createQuestionNav() {
+            questionNav.innerHTML = '';
+            questions.forEach((_, index) => {
+                const btn = document.createElement('div');
+                btn.className = 'question-nav-btn not-visited';
+                btn.textContent = index + 1;
+                btn.addEventListener('click', () => navigateToQuestion(index));
+                questionNav.appendChild(btn);
+            });
+        }
+
+        // Load a specific question
+        function loadQuestion(index) {
+            if (index < 0 || index >= questions.length) return;
+            
+            currentQuestion = index;
+            const question = questions[index];
+            
+            // Update question number
+            questionNumber.textContent = `Question ${question.qNumber} of ${questions.length}`;
+            
+            // Update question image
+            questionImage.src = question.image;
+            questionImage.alt = `Question ${question.qNumber}`;
+            
+            // Update options
+            optionsContainer.innerHTML = '';
+            question.options.forEach((option, optionIndex) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                if (userAnswers[index] === optionIndex) {
+                    optionElement.classList.add('selected');
+                }
+                
+                // Re-enable pointer events for new question
+                optionElement.style.pointerEvents = 'auto';
+                
+                optionElement.innerHTML = `
+                    <div class="option-letter">${String.fromCharCode(65 + optionIndex)}</div>
+                    <div class="option-text">${option}</div>
+                `;
+                
+                optionElement.addEventListener('click', () => selectOption(optionIndex));
+                optionsContainer.appendChild(optionElement);
+            });
+            
+            // Update navigation buttons
+            updateQuestionNav();
+            
+            // Update buttons state
+            prevBtn.disabled = index === 0;
+            nextBtn.textContent = index === questions.length - 1 ? 'Submit' : 'Next';
+            
+            // Hide feedback
+            feedbackBox.classList.add('hidden');
+            feedbackBox.innerHTML = '';
+            
+            // Update question status
+            if (questionStatus[index] === 'not-visited') {
+                questionStatus[index] = 'not-answered';
+            }
+        }
+
+        // Select an option with auto-advance
+        function selectOption(optionIndex) {
+            // If already answered, do nothing
+            if (userAnswers[currentQuestion] !== null) return;
+            
+            userAnswers[currentQuestion] = optionIndex;
+            questionStatus[currentQuestion] = 'answered';
+            
+            // Update UI
+            const options = document.querySelectorAll('.option');
+            const question = questions[currentQuestion];
+            
+            // Disable all options to prevent further selection
+            options.forEach(option => {
+                option.style.pointerEvents = 'none';
+            });
+            
+            options.forEach((option, index) => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+                
+                if (index === optionIndex) {
+                    option.classList.add('selected');
+                }
+                
+                // Show correct/incorrect feedback immediately
+                if (index === question.answer) {
+                    option.classList.add('correct');
+                } else if (index === optionIndex && index !== question.answer) {
+                    option.classList.add('incorrect');
+                }
+            });
+            
+            // Show feedback
+            feedbackBox.classList.remove('hidden');
+            if (optionIndex === question.answer) {
+                feedbackBox.className = 'feedback-box correct';
+                feedbackBox.innerHTML = '<i class="fas fa-check-circle"></i> Correct! Well done.';
+            } else {
+                feedbackBox.className = 'feedback-box incorrect';
+                feedbackBox.innerHTML = `<i class="fas fa-times-circle"></i> Incorrect. The correct answer is ${String.fromCharCode(65 + question.answer)}.`;
+            }
+            
+            updateQuestionNav();
+            updateScore();
+            
+            // Auto-advance to next question after 2 seconds
+            clearTimeout(autoAdvanceTimeout);
+            autoAdvanceTimeout = setTimeout(() => {
+                if (currentQuestion < questions.length - 1) {
+                    loadQuestion(currentQuestion + 1);
+                } else {
+                    showResults();
+                }
+            }, 2000);
+        }
+
+        // Navigate to a specific question
+        function navigateToQuestion(index) {
+            clearTimeout(autoAdvanceTimeout);
+            loadQuestion(index);
+        }
+
+        // Update question navigation
+        function updateQuestionNav() {
+            const navButtons = document.querySelectorAll('.question-nav-btn');
+            navButtons.forEach((btn, index) => {
+                btn.className = 'question-nav-btn';
+                btn.classList.add(questionStatus[index]);
+                if (index === currentQuestion) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Update score display
+        function updateScore() {
+            score = userAnswers.reduce((total, answer, index) => {
+                return total + (answer === questions[index].answer ? 1 : 0);
+            }, 0);
+            currentScore.textContent = score;
+        }
+
+        // Start the timer
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                seconds++;
+                updateTimerDisplay();
+            }, 1000);
+        }
+
+        // Update timer display
+        function updateTimerDisplay() {
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
+            
+            timerDisplay.textContent = 
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Mark question for review
+        function markForReview() {
+            if (questionStatus[currentQuestion] === 'answered') {
+                questionStatus[currentQuestion] = 'review';
+            } else {
+                questionStatus[currentQuestion] = 'review';
+            }
+            updateQuestionNav();
+            
+            // Move to next question if available
+            if (currentQuestion < questions.length - 1) {
+                loadQuestion(currentQuestion + 1);
+            }
+        }
+
+        // Clear response for current question
+        function clearResponse() {
+            userAnswers[currentQuestion] = null;
+            questionStatus[currentQuestion] = 'not-answered';
+            
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+                option.style.pointerEvents = 'auto';
+            });
+            
+            feedbackBox.classList.add('hidden');
+            updateQuestionNav();
+            updateScore();
+            
+            // Clear any pending auto-advance
+            clearTimeout(autoAdvanceTimeout);
+        }
+
+        // Show results
+        function showResults() {
+            clearInterval(timerInterval);
+            clearTimeout(autoAdvanceTimeout);
+            
+            const correctCount = userAnswers.reduce((total, answer, index) => {
+                return total + (answer === questions[index].answer ? 1 : 0);
+            }, 0);
+            
+            const wrongCount = questions.length - correctCount;
+            const percentage = Math.round((correctCount / questions.length) * 100);
+            
+            correctAnswers.textContent = correctCount;
+            wrongAnswers.textContent = wrongCount;
+            finalScore.textContent = `${percentage}%`;
+            finalTime.textContent = timerDisplay.textContent;
+            
+            document.querySelector('.quiz-container').style.display = 'none';
+            resultSection.style.display = 'block';
+        }
+
+        // Event listeners
+        prevBtn.addEventListener('click', () => {
+            clearTimeout(autoAdvanceTimeout);
+            if (currentQuestion > 0) {
+                loadQuestion(currentQuestion - 1);
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            clearTimeout(autoAdvanceTimeout);
+            if (currentQuestion < questions.length - 1) {
+                loadQuestion(currentQuestion + 1);
+            } else {
+                showResults();
+            }
+        });
+
+        markBtn.addEventListener('click', markForReview);
+        clearBtn.addEventListener('click', clearResponse);
+
+        reviewBtn.addEventListener('click', () => {
+            resultSection.style.display = 'none';
+            document.querySelector('.quiz-container').style.display = 'flex';
+            loadQuestion(0);
+        });
+
+        restartBtn.addEventListener('click', () => {
+            // Reset quiz state
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = Array(questions.length).fill(null);
+            questionStatus = Array(questions.length).fill('not-visited');
+            seconds = 0;
+            
+            // Clear any pending timeouts
+            clearTimeout(autoAdvanceTimeout);
+            
+            // Reset UI
+            resultSection.style.display = 'none';
+            document.querySelector('.quiz-container').style.display = 'flex';
+            updateTimerDisplay();
+            updateScore();
+            
+            // Restart quiz
+            initQuiz();
+        });
+
+        // Initialize the quiz when the page loads
+        window.addEventListener('load', initQuiz);
+    </script>
+
+    <!-- Footer -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <br><br>
+    <footer class="site-footer">
+      <div class="footer-top">
+        <div class="brand">
+          <div class="logo">TN</div>
+          <div>
+            <h3>Tushar Nagare</h3>
+            <p>Web Developer</p>
+          </div>
+        </div>
+
+        <div class="links">
+          <div class="col">
+            <h4>Contact</h4>
+            <p>
+              <a href="mailto:tusharnagare2006@gmail.com" class="contact-link">
+                📧 tusharnagare2006@gmail.com
+              </a>
+            </p>
+            <p>
+              <a href="tel:+917875262657" class="contact-link">
+                📞 +91 7875262657
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="socials">
+          <a href="https://github.com/Tushar-3612" aria-label="GitHub" target="_blank" id="git">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/tushar-nagare-5a17b9287/" aria-label="LinkedIn" target="_blank" id="linkdein">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a href="https://www.instagram.com/tushar__3612" aria-label="Instagram" target="_blank" id="insta">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </div>
+
+        <div class="copyright">
+        &copy; <a href="https://tn-tusharnagare.netlify.app/" target="_blank" class="footer-name" id="admin">Tushar Nagare</a> 
+        </div>
+      </div>
+    </footer>
+
+    <style>
+    :root{
+      --grad1: #6c63ff;
+      --grad2: #4a44c6;
+      --accent: #ff6584;
+      --muted: #bfc8d6;
+    }
+
+    /* ========== Footer Styling ========== */
+    .site-footer{
+      color: white;
+      background: linear-gradient(135deg, var(--grad1) 0%, var(--grad2) 100%);
+      padding: 60px 40px;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto;
+      position: relative;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+      width: 100%;
+      margin-top: auto;
+    }
+    #git:hover{
+     color: black;    
+    }
+    #linkdein:hover{
+        color: blue;
+    }
+    #insta:hover{
+        color: rgb(202, 10, 42);
+    }
+    #admin{
+        color: black;
+    }
+    #admin:hover{
+        color: red;
+    }
+    .footer-top{
+      display: flex;
+      gap: 50px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto 40px;
+    }
+
+    .brand{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      min-width: 220px;
+    }
+
+    .logo{
+      width:72px;
+      height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:14px;
+      background: linear-gradient(180deg, rgba(255,101,132,0.25), rgba(255,101,132,0.08));
+      color: var(--accent);
+      font-weight:700;
+      font-size:22px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    }
+
+    .brand h3{ margin:0; font-size:20px; }
+    .brand p{ margin:2px 0 0; color:var(--muted); font-size:14px; }
+
+    .links{
+      display:flex;
+      gap:50px;
+      flex:1;
+      justify-content: space-between;
+      min-width: 320px;
+    }
+
+    .col h4{
+      margin:0 0 12px;
+      font-size:16px;
+      color: var(--accent);
+      letter-spacing: 0.5px;
+    }
+
+    .col a{
+      display:block;
+      color: #e6eef9;
+      text-decoration:none;
+      margin:6px 0;
+      font-size:15px;
+    }
+    .col a:hover{ color: var(--accent); transform: translateX(4px); transition: all 0.3s ease; }
+
+    .contact-link {
+      color: #e6eef9;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .contact-link:hover {
+      color: var(--accent);
+      transform: translateX(3px);
+      
+    }
+
+    .footer-bottom{
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top:20px;
+      max-width:1200px;
+      margin: 0 auto;
+      display:flex;
+      align-items:center;
+      gap:20px;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    /* ========== Socials ========== */
+    .socials a{
+      color: #e6eef9;
+      margin-right:16px;
+      font-size:22px;
+      text-decoration:none;
+      transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s;
+    }
+    .socials a:hover{
+      color: var(--accent);
+      transform: translateY(-4px);
+      text-shadow: 0 0 10px rgba(255, 101, 132, 0.7);
+    }
+
+    .footer-name {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+
+    .footer-name:hover {
+      color: #ff9db3;
+      text-shadow: 0 0 8px rgba(255, 101, 132, 0.6);
+    }
+
+    /* Responsive */
+    @media (max-width:820px){
+      .footer-top{ flex-direction: column; gap:30px; }
+      .links{ flex-direction: column; gap:24px; }
+      .footer-bottom{ flex-direction: column; gap:14px; align-items:flex-start; padding-bottom:28px; }
+    }
+    </style>
+
+     
+</body>
+</html>
